@@ -1,4 +1,4 @@
-var module = angular.module('contactsApp', ['angularSoundManager']);
+var module = angular.module('contactsApp', []);
 
 module.service('ContactService', function () {
     //to create unique contact id
@@ -6,16 +6,13 @@ module.service('ContactService', function () {
 
     //contacts array to hold list of all contacts
     var contacts = [{
-        id: 'one',
-    title: 'Rain',
-    artist: 'Drake',
-    url: '../audio/rain.mp3',
+        id: 1,
         
         'head': '../img/corgi_head.png',
         'body': '../img/corgi_body.png',
         'name': 'Corgi',
 
-        'url': '../rain.mp3',
+        'beat': 'rain.mp3',
 
     }
     
@@ -74,18 +71,42 @@ module.service('ContactService', function () {
     this.list = function () {
         return contacts;
     }
+
+
+
 });
 
 module.controller('ContactController', function ($scope, ContactService) {
 
     $scope.contacts = ContactService.list(); 
+    var audio = new Audio('audio/bark.wav');
+    var drum = new Audio('audio/drum.wav');
+    audio.loop = true;
+    drum.loop = true;
+    
+$scope.playBeat = function(){
+    
+    audio.play();
+};
+
+$scope.stopBeat = function(){
+    audio.pause();
+    audio.currentTime = 0;
+};
+
+$scope.drumBeat = function(){
+    
+    drum.play();
+};
+
+$scope.drumStopBeat = function(){
+    drum.pause();
+    drum.currentTime = 0;
+};
+
+
 
     
-$scope.playSong = function () {
-    $scope.audio = ngAudio.load(url);
-    $scope.audio.volume = 0.8;
-
-};
    
 
 });

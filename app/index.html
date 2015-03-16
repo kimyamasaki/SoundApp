@@ -11,7 +11,7 @@
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-soundmanager2/dist/angular-soundmanager2.js"></script>
+  <!-- <script src="bower_components/angular-soundmanager2/dist/angular-soundmanager2.js"></script> -->
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -24,15 +24,21 @@
 <body>
 
   <div ng-app="contactsApp" ng-controller="ContactController">
-    <sound-manager></sound-manager>
+    <!-- <sound-manager></sound-manager> -->
 
            
 
                 <li ng-repeat="contact in contacts">
                 
-                <button music-player="play" add-song="contact" >{{contact.url}}</button>         
-                <img ng-src='img/{{ contact.head }}' /><!-- <img ng-src='img/{{ contact.body }}' /> -->{{ contact.name }}
-              
+                <button ng-click="playBeat()">Play Sound</button>
+                <button ng-click="stopBeat()">Stop the Sound</button>
+
+            
+
+                <img ng-click="playBeat()" ng-src='img/{{ contact.head }}' /><!-- <img ng-src='img/{{ contact.body }}' /> -->{{ contact.name }}
+                
+                <button ng-click="drumBeat()">Play drum</button>
+                <button ng-click="drumStopBeat()">Stop drum</button>
 
   </div>
 
