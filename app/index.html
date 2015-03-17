@@ -26,20 +26,23 @@
   <div ng-app="contactsApp" ng-controller="ContactController">
     <!-- <sound-manager></sound-manager> -->
 
-           
-
-                <li ng-repeat="contact in contacts">
+      <div ng-repeat="contact in contacts" ng-class="isPlaying[$index]" ng-click="togglePlay($index)">
                 
-                <button ng-click="playBeat()">Play Sound</button>
-                <button ng-click="stopBeat()">Stop the Sound</button>
+          <!-- <button ng-click="playBeat()">Play Sound</button>
+          <button ng-click="stopBeat()">Stop the Sound</button> -->
 
-            
+      
+          <img ng-src='img/{{ contact.head }}' />
 
-                <img ng-click="playBeat()" ng-src='img/{{ contact.head }}' /><!-- <img ng-src='img/{{ contact.body }}' /> -->{{ contact.name }}
-                
-                <button ng-click="drumBeat()">Play drum</button>
-                <button ng-click="drumStopBeat()">Stop drum</button>
 
+          <!-- <button ng-click="toggleLoop = !toggleLoop">
+            <img ng-src='img/{{ contact.head }}' />
+          </button> -->
+          <!-- <img ng-src='img/{{ contact.body }}' /> {{ contact.name }}-->
+          
+         <!--  <button ng-click="drumBeat()">Play drum</button>
+          <button ng-click="drumStopBeat()">Stop drum</button> -->
+      </div>
   </div>
 
 </body>
