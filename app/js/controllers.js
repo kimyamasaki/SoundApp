@@ -95,108 +95,30 @@ module.controller('ContactController', function ($scope, ContactService) {
     // audio.loop = true;
     // drum.loop = true;
 
-    // var called = true;
 
+    $scope.clips = [];
 
-// $scope.togglePlay = function(id){
-//     var selected = new Audio($scope.contacts[id].audio);
-//     selected.loop = true;
-
-//     if (called) {
-//         console.log("toggle play");
-//         called = false;
-//         return selected.play();
-        
-
-//     } else {
-//         console.log("toggle stop");
-//         selected.pause();
-//         selected.currentTime = 0;
-//         called = true;
-//     }
-// }
-
-
-// $scope.toggleLoop = false;
-
-
-// $scope.togglePlay = function(id){
-
-//     // $scope.toggleLoop = !$scope.toggleLoop;
-
-//     var selected = new Audio($scope.contacts[id].audio);
-//     // var called = $scope.contacts[id].called;
-//     // called = true;
-//     selected.loop = true;
-
-//     if ($scope.toggleLoop) {
-//         console.log("toggle play: " + selected);
-//         $scope.toggleLoop = !$scope.toggleLoop;
-//         return selected.play();
-        
-
-//     } else {
-//         console.log("toggle stop: " + selected);
-//         selected.pause();
-//         selected.currentTime = 0;
-//         $scope.toggleLoop = !$scope.toggleLoop;
-//     }
-// }
-
-
-$scope.isPlaying = [];
-
-$scope.togglePlay = function(id){
-    var selected = $scope.contacts[id];
-    var audio = new Audio(selected.audio);
-    // var called = $scope.contacts[id].called;
-    // called = true;
-    audio.loop = true;
-
-    // console.log(selected.isPlaying);
-
-
-    // $scope.isPlaying[id] = $scope.isPlaying[id]=='error'?'':'error';
-
-    selected.isPlaying = !selected.isPlaying;
-    if (selected.isPlaying == false) {
-        console.log("toggle play: " + selected);
-        // $scope.contacts[id].called = false;
-        
-        // return audio.play();
-        audio.play();
-        
-
-    } else if (selected.isPlaying == true) {
-        
-        audio.pause();
-        audio.currentTime = 0;
-        // selected.isPlaying = false;
-        console.log("toggle stop: " + selected);
-        // $scope.contacts[id].called = true;
+    for (var i = 0; i < $scope.contacts.length; i++) {
+        $scope.clips[i] = (new Audio($scope.contacts[i].audio));
+        console.log($scope.clips[i]);
     }
 
 
-
-    // if (called) {
-    //     console.log("toggle play: " + selected);
-    //     $scope.contacts[id].called = false;
-    //     return selected.play();
-        
-
-    // } else {
-    //     console.log("toggle stop: " + selected);
-    //     selected.pause();
-    //     selected.currentTime = 0;
-    //     $scope.contacts[id].called = true;
-    // }
-};
+    $scope.togglePlay = function(id){
+        var selected = $scope.contacts[id];
+        var selectedClip = $scope.clips[id];
+        selectedClip.loop = true;
 
 
-$scope.playBeat = function(id) {
-    console.log("toggle play: " + selected);
-    id.play();
-};
+        if (selected.isPlaying == false) {
+            selectedClip.play();
+
+        } else if (selected.isPlaying == true) {     
+            selectedClip.pause();
+            selectedClip.currentTime = 0;
+        }
+    };
+
 
 // $scope.playBeat = function(){
     
