@@ -7,5 +7,7 @@ html, body {
   overflow-x:hidden;
 }
 
-.is-grey-true { background-color: #ccc; }
-.error { background-color: red; opacity: 0.5;}
+#menu li {
+	display: inline;
+	list-style-type: none;
+}

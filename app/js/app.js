@@ -1,6 +1,6 @@
 /* App Module */
 
-var contactsApp = angular.module('contactsApp', [
+var soundsApp = angular.module('soundsApp', [
   
   'ngRoute',
   'controllers'
