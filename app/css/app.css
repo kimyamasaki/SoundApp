@@ -11,3 +11,11 @@ html, body {
 	display: inline;
 	list-style-type: none;
 }
+
+.added {
+	opacity: 0.5;
+}
+
+.paused {
+	opacity: 0.5;
+}

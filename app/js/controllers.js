@@ -171,10 +171,15 @@ module.controller('soundController', function ($scope, soundservice) {
 
     $scope.addSound = function(id) {
         $scope.sounds[id].added = true;
+        $scope.sounds[id].isPlaying = false;
+
+        $scope.togglePlay(id);
     }
+
 
     $scope.deleteSound = function(id){
         $scope.sounds[id].added = false;
+        $scope.sounds[id].isPlaying = false;
     }
 
 
@@ -211,7 +216,7 @@ module.controller('soundController', function ($scope, soundservice) {
                 delay = false;
             }
         }
-        console.log(delay);
+        // console.log(delay);
 
         // if ($scope.clips.length > 0) {
         //     console.log("add a delay");
