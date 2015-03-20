@@ -39,7 +39,7 @@
       </div>
 
       <ul>
-        <li ng-repeat="sound in sounds | filter:filters" ng-click="sound.isPlaying = !sound.isPlaying; addSound($index); togglePlay($index);" ng-show="soundmenuHideShow">
+        <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id); togglePlay(sound.id);" ng-show="soundmenuHideShow">
                   
             <img ng-src='img/{{ sound.thumb }}' />
 
@@ -50,9 +50,10 @@
 
 
     <div id="soundboard">
-      <div ng-repeat="sound in nowPlaying track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay($index);">
+      <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay($index);">
                 
-          <img ng-src='img/{{ sound.pic }}' />
+          <img ng-src='img/{{ sound.pic }}' ng-show="sound.added == true" />
+          <a href="javascript:void(0)" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</a>
 
       </div>
     </div>

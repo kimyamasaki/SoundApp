@@ -12,7 +12,8 @@ module.service('soundservice', function () {
         // 'body': '../img/corgi_body.png',
         'name': 'Corgi',
         'audio': 'audio/bark.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
         'type': 'beat'
         // 'beat': 'rain.mp3',
     },
@@ -23,7 +24,8 @@ module.service('soundservice', function () {
         'pic': '../img/portrait_1.png',
         'name': 'Drum',
         'audio': 'audio/drum.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
         'type': 'beat'
     },
 
@@ -33,7 +35,8 @@ module.service('soundservice', function () {
         'pic': '../img/portrait_2.png',
         'name': 'Drum',
         'audio': 'audio/drum.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
         'type': 'bass'
     },
 
@@ -43,7 +46,8 @@ module.service('soundservice', function () {
         'pic': '../img/portrait_3.png',
         'name': 'Drum',
         'audio': 'audio/drum.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
         'type': 'bass'
     },
 
@@ -53,7 +57,8 @@ module.service('soundservice', function () {
         'pic': '../img/portrait_5.png',
         'name': 'Drum',
         'audio': 'audio/drum.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
         'type': 'melody'
     },
 
@@ -63,7 +68,8 @@ module.service('soundservice', function () {
         'pic': '../img/portrait_6.png',
         'name': 'Drum',
         'audio': 'audio/drum.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
         'type': 'melody'
     },
 
@@ -73,7 +79,8 @@ module.service('soundservice', function () {
         'pic': '../img/portrait_7.png',
         'name': 'Drum',
         'audio': 'audio/drum.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
         'type': 'vocal'
     },
 
@@ -83,7 +90,8 @@ module.service('soundservice', function () {
         'pic': '../img/portrait_8.png',
         'name': 'Drum',
         'audio': 'audio/drum.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
         'type': 'vocal'
     }
     
@@ -158,36 +166,15 @@ module.controller('soundController', function ($scope, soundservice) {
 
     for (var i = 0; i < $scope.sounds.length; i++) {
         $scope.clips[i] = (new Audio($scope.sounds[i].audio));
-        console.log($scope.clips[i]);
     }
 
-console.log($scope.nowPlaying);
+
     $scope.addSound = function(id) {
-        //console.log($scope.sounds);
-        //console.log($scope.clips);
-        $scope.nowPlaying.push($scope.sounds[id]);
-        //console.log($scope.sounds[id]);
-        console.log($scope.nowPlaying);
-
-
+        $scope.sounds[id].added = true;
     }
 
     $scope.deleteSound = function(id){
-        var selectedClip = $scope.clips[id];
-        selectedClip.pause();
-        selectedClip.currentTime = 0;
-
-        console.log(id);
-        $scope.nowPlaying.splice(id, 1);
-        console.log($scope.nowPlaying);
-
-        
-        
-   
-    }
-
-    $scope.whatIndex =function(id){
-        console.log(id);
+        $scope.sounds[id].added = false;
     }
 
 
