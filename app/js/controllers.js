@@ -158,12 +158,36 @@ module.controller('soundController', function ($scope, soundservice) {
 
     for (var i = 0; i < $scope.sounds.length; i++) {
         $scope.clips[i] = (new Audio($scope.sounds[i].audio));
-        // console.log($scope.clips[i]);
+        console.log($scope.clips[i]);
     }
 
-
+console.log($scope.nowPlaying);
     $scope.addSound = function(id) {
+        //console.log($scope.sounds);
+        //console.log($scope.clips);
         $scope.nowPlaying.push($scope.sounds[id]);
+        //console.log($scope.sounds[id]);
+        console.log($scope.nowPlaying);
+
+
+    }
+
+    $scope.deleteSound = function(id){
+        var selectedClip = $scope.clips[id];
+        selectedClip.pause();
+        selectedClip.currentTime = 0;
+
+        console.log(id);
+        $scope.nowPlaying.splice(id, 1);
+        console.log($scope.nowPlaying);
+
+        
+        
+   
+    }
+
+    $scope.whatIndex =function(id){
+        console.log(id);
     }
 
 
@@ -180,7 +204,7 @@ module.controller('soundController', function ($scope, soundservice) {
 
         if (selected.isPlaying == false) {
             selectedClip.play();
-            console.log(selectedClip.currentTime);
+            //console.log(selectedClip.currentTime);
 
         } else if (selected.isPlaying == true) {     
             selectedClip.pause();
