@@ -33,8 +33,8 @@ module.service('soundservice', function () {
         id: 2,
         'thumb': '../img/c_portrait_2.png',
         'pic': '../img/portrait_2.png',
-        'name': 'Drum',
-        'audio': 'audio/drum.wav',
+        'name': 'Bass',
+        'audio': 'audio/bass.wav',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -44,8 +44,8 @@ module.service('soundservice', function () {
         id: 3,
         'thumb': '../img/c_portrait_3.png',
         'pic': '../img/portrait_3.png',
-        'name': 'Drum',
-        'audio': 'audio/drum.wav',
+        'name': 'Snare',
+        'audio': 'audio/snare.wav',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -55,8 +55,8 @@ module.service('soundservice', function () {
         id: 4,
         'thumb': '../img/c_portrait_5.png',
         'pic': '../img/portrait_5.png',
-        'name': 'Drum',
-        'audio': 'audio/drum.wav',
+        'name': 'Snare',
+        'audio': 'audio/snare.wav',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -158,8 +158,14 @@ module.controller('soundController', function ($scope, soundservice) {
     $scope.nowPlaying = [];
     $scope.filters = {};
 
+    $scope.splashHideShow = true;
+    $scope.soundPartyHideShow = false;
     $scope.categoriesHideShow = false;
     $scope.soundmenuHideShow = false;
+
+    var loadList = [0, 1, 3];
+    
+
 
     var delay = false;
 
@@ -168,18 +174,31 @@ module.controller('soundController', function ($scope, soundservice) {
         $scope.clips[i] = (new Audio($scope.sounds[i].audio));
     }
 
+    $scope.newSoundParty = function(id){
+        $scope.splashHideShow = false;
+        $scope.soundPartyHideShow = true;
+        //console.log('New!')
+    }
+    $scope.loadSoundParty = function(id){
+        $scope.splashHideShow = false;
+        $scope.soundPartyHideShow = true;
+        
+
+        for (var i = 0; i < loadList.length; i++) {
+            $scope.sounds[loadList[i]].added = true;
+            $scope.togglePlay(loadList[i]);
+            //console.log(loadList[i]);
+        }
+
+        //console.log('Loading...')
+    }
 
     $scope.addSound = function(id) {
         $scope.sounds[id].added = true;
-        $scope.sounds[id].isPlaying = false;
-
-        $scope.togglePlay(id);
     }
-
 
     $scope.deleteSound = function(id){
         $scope.sounds[id].added = false;
-        $scope.sounds[id].isPlaying = false;
     }
 
 
@@ -201,6 +220,10 @@ module.controller('soundController', function ($scope, soundservice) {
         } else if (selected.isPlaying == true) {     
             selectedClip.pause();
             selectedClip.currentTime = 0;
+
+        } if (selected.isPlaying == false && $scope.sounds[id].added == false) {     
+            selectedClip.pause();
+            selectedClip.currentTime = 0;
         }
     };
 
@@ -216,7 +239,7 @@ module.controller('soundController', function ($scope, soundservice) {
                 delay = false;
             }
         }
-        // console.log(delay);
+        console.log(delay);
 
         // if ($scope.clips.length > 0) {
         //     console.log("add a delay");

@@ -24,41 +24,47 @@
 <body>
 
   <div ng-app="soundApp" ng-controller="soundController">
+    <div ng-show="splashHideShow">
+       <a href="javascript:void(0)"  ng-click="newSoundParty()">New</a>
+        <a href="javascript:void(0)"  ng-click="loadSoundParty(loadList)">Load</a>
 
+    </div>
+
+    <div ng-show="soundPartyHideShow">
       
-    <div id="menu">
-      <button ng-click="menuToggle(); filters.type = ''">+</button>
+      <div id="menu">
+        <button ng-click="menuToggle(); filters.type = ''">+</button>
 
-      <div ng-show="categoriesHideShow" ng-click="viewSoundMenu()">
+        <div ng-show="categoriesHideShow" ng-click="viewSoundMenu()">
+          <ul>
+            <li><a href="" ng-click="filters.type = 'beat'">Beat</a></li>
+            <li><a href="" ng-click="filters.type = 'bass'">Bass</a></li>
+            <li><a href="" ng-click="filters.type = 'melody'">Melody</a></li>
+            <li><a href="" ng-click="filters.type = 'vocal'">Vocal</a></li>
+          </ul>
+        </div>
+
         <ul>
-          <li><a href="" ng-click="filters.type = 'beat'">Beat</a></li>
-          <li><a href="" ng-click="filters.type = 'bass'">Bass</a></li>
-          <li><a href="" ng-click="filters.type = 'melody'">Melody</a></li>
-          <li><a href="" ng-click="filters.type = 'vocal'">Vocal</a></li>
+          <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id); togglePlay(sound.id);" ng-show="soundmenuHideShow">
+                    
+              <img ng-src='img/{{ sound.thumb }}' />
+
+          </li>
         </ul>
       </div>
 
-      <ul>
-        <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id);" ng-show="soundmenuHideShow">
+
+
+      <div id="soundboard">
+        <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay($index);">
                   
-            <img ng-src='img/{{ sound.thumb }}' ng-click="sound.added = !sound.added" ng-class="{added: sound.added}" />
+            <img ng-src='img/{{ sound.pic }}' ng-show="sound.added == true" />
+            <a href="javascript:void(0)" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</a>
 
-        </li>
-      </ul>
-    </div>
-
-
-
-    <div id="soundboard">
-      <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay(sound.id);">
-                
-          <img ng-src='img/{{ sound.pic }}' ng-show="sound.added == true" ng-class="{paused: sound.isPlaying}" />
-          <a href="javascript:void(0)" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</a>
-
+        </div>
       </div>
     </div>
-
-  </div>
+  </div><!-- soundController end -->
 
 </body>
 </html>
