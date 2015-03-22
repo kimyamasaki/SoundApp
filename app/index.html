@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" ng-app="soundApp">
+<html lang="en" ng-app="contactsApp">
 <head>
   <!-- <meta charset="utf-8"> -->
   <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"> -->
-  <title>sounds</title>
+  <title>Contacts</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="css/app.css">
+  <!-- <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'> -->
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
@@ -23,48 +23,16 @@
 
 <body>
 
-  <div ng-app="soundApp" ng-controller="soundController">
-    <div ng-show="splashHideShow">
-       <a href="javascript:void(0)"  ng-click="newSoundParty()">New</a>
-        <a href="javascript:void(0)"  ng-click="loadSoundParty(loadList)">Load</a>
+  <div ng-app="contactsApp" ng-controller="ContactController">
 
-    </div>
-
-    <div ng-show="soundPartyHideShow">
-      
-      <div id="menu">
-        <button ng-click="menuToggle(); filters.type = ''">+</button>
-
-        <div ng-show="categoriesHideShow" ng-click="viewSoundMenu()">
-          <ul>
-            <li><a href="" ng-click="filters.type = 'beat'">Beat</a></li>
-            <li><a href="" ng-click="filters.type = 'bass'">Bass</a></li>
-            <li><a href="" ng-click="filters.type = 'melody'">Melody</a></li>
-            <li><a href="" ng-click="filters.type = 'vocal'">Vocal</a></li>
-          </ul>
-        </div>
-
-        <ul>
-          <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id); togglePlay(sound.id);" ng-show="soundmenuHideShow">
-                    
-              <img ng-src='img/{{ sound.thumb }}' />
-
-          </li>
-        </ul>
+      <div ng-repeat="contact in contacts" ng-class="isPlaying[$index]" ng-click="contact.isPlaying = !contact.isPlaying; togglePlay($index);">
+          
+          <button ng-click="add()">{{contact.name}}</button>      
+          <div ng-show="{{}}">
+          <img ng-src='img/{{ contact.head }}' />{{contact.name}}
+          </div>
       </div>
-
-
-
-      <div id="soundboard">
-        <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay($index);">
-                  
-            <img ng-src='img/{{ sound.pic }}' ng-show="sound.added == true" />
-            <a href="javascript:void(0)" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</a>
-
-        </div>
-      </div>
-    </div>
-  </div><!-- soundController end -->
+  </div>
 
 </body>
 </html>
