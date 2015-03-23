@@ -1,172 +1,340 @@
-var module = angular.module('contactsApp', []);
+var module = angular.module('soundApp', []);
 
-module.service('ContactService', function () {
-    //to create unique contact id
+module.service('soundservice', function () {
+    //to create unique sound id
     var uid = 2;
 
-    //contacts array to hold list of all contacts
-    var contacts = [{
+    //sounds array to hold list of all sounds
+    var sounds = [{
         id: 0,
-        'head': '../img/corgi_head.png',
+        'thumb': '../img/c_portrait_4.png',
+        'pic': '../img/portrait_4.png',
         // 'body': '../img/corgi_body.png',
         'name': 'Corgi',
         'audio': 'audio/bark.wav',
-        'isPlaying': 'false',
+        'added': false,
+        'isPlaying': false,
+        'type': 'beat'
         // 'beat': 'rain.mp3',
     },
 
     {
         id: 1,
-        'head': '../img/corgi_body.png',
-        // 'body': '../img/corgi_body.png',
+        'thumb': '../img/c_portrait_1.png',
+        'pic': '../img/portrait_1.png',
         'name': 'Drum',
         'audio': 'audio/drum.wav',
-        'isPlaying': 'false',
-        // 'beat': 'rain.mp3',
+        'added': false,
+        'isPlaying': false,
+        'type': 'beat'
     },
+
     {
         id: 2,
-        'head': '../img/corgi_head.png',
-        // 'body': '../img/corgi_body.png',
-        'name': 'Snare',
-        'audio': 'audio/snare.wav',
-        'isPlaying': 'false',
-        // 'beat': 'rain.mp3',
+        'thumb': '../img/c_portrait_2.png',
+        'pic': '../img/portrait_2.png',
+        'name': 'Bass',
+        'audio': 'audio/bass.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'bass'
     },
 
     {
         id: 3,
-        'head': '../img/corgi_head.png',
-        // 'body': '../img/corgi_body.png',
-        'name': 'Bass',
-        'audio': 'audio/bass.wav',
-        'isPlaying': 'false',
-        // 'beat': 'rain.mp3',
+        'thumb': '../img/c_portrait_3.png',
+        'pic': '../img/portrait_3.png',
+        'name': 'Snare',
+        'audio': 'audio/snare.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'bass'
     },
+
+    {
+        id: 4,
+        'thumb': '../img/c_portrait_5.png',
+        'pic': '../img/portrait_5.png',
+        'name': 'Snare',
+        'audio': 'audio/snare.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'melody'
+    },
+
+    {
+        id: 5,
+        'thumb': '../img/c_portrait_6.png',
+        'pic': '../img/portrait_6.png',
+        'name': 'Drum',
+        'audio': 'audio/drum.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'melody'
+    },
+
+    {
+        id: 6,
+        'thumb': '../img/c_portrait_7.png',
+        'pic': '../img/portrait_7.png',
+        'name': 'Drum',
+        'audio': 'audio/drum.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'vocal'
+    },
+
+    {
+        id: 7,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/portrait_8.png',
+        'name': 'Drum',
+        'audio': 'audio/drum.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'vocal'
+    }
     
     ];
-    
+
 
     //$scope.groups = [];
-    //console.log(contacts[0]);
+    //console.log(sounds[0]);
 
-    //save method create a new contact if not already exists
+    //save method create a new sound if not already exists
     //else update the existing object
-    this.save = function (contact) {
-        if (contact.id == null) {
-            //if this is new contact, add it in contacts array
-            contact.id = uid++;
-            contacts.push(contact);
+    this.save = function (sound) {
+        if (sound.id == null) {
+            //if this is new sound, add it in sounds array
+            sound.id = uid++;
+            sounds.push(sound);
         } else {
-            //for existing contact, find this contact using id
+            //for existing sound, find this sound using id
             //and update it.
-            for (i in contacts) {
-                if (contacts[i].id == contact.id) {
-                    contacts[i] = contact;
+            for (i in sounds) {
+                if (sounds[i].id == sound.id) {
+                    sounds[i] = sound;
                 }
             }
         }
 
     }
 
-    //simply search contacts list for given id
-    //and returns the contact object if found
+    //simply search sounds list for given id
+    //and returns the sound object if found
     this.get = function (id) {
-        for (i in contacts) {
-            if (contacts[i].id == id) {
-                return contacts[i];
+        for (i in sounds) {
+            if (sounds[i].id == id) {
+                return sounds[i];
             }
         }
 
     }
-    
 
-    // this.add = function (id) {
-    //     contact.id = uid++;
-    //     contact.head = '../img/corgi_head.png';
-    //     contacts.push(contact);
-    // }
 
-    //iterate through contacts list and delete 
-    //contact if found
+    //iterate through sounds list and delete 
+    //sound if found
     this.delete = function (id) {
-        for (i in contacts) {
-            if (contacts[i].id == id) {
-                contacts.splice(i, 1);
+        for (i in sounds) {
+            if (sounds[i].id == id) {
+                sounds.splice(i, 1);
             }
         }
     }
 
-    //simply returns the contacts list
+    //simply returns the sounds list
     this.list = function () {
-        return contacts;
+        return sounds;
     }
 
 
 
 });
 
-module.controller('ContactController', function ($scope, ContactService) {
+module.controller('soundController', function ($scope, soundservice) {
 
-    $scope.contacts = ContactService.list(); 
-    // var audio = new Audio('audio/bark.wav');
-    // var drum = new Audio('audio/drum.wav');
-    // audio.loop = true;
-    // drum.loop = true;
-
-
+    $scope.sounds = soundservice.list(); 
     $scope.clips = [];
+    $scope.nowPlaying = [];
+    $scope.filters = {};
 
-    for (var i = 0; i < $scope.contacts.length; i++) {
-        $scope.clips[i] = (new Audio($scope.contacts[i].audio));
-        console.log($scope.clips[i]);
+    $scope.splashHideShow = true;
+    $scope.soundPartyHideShow = false;
+    $scope.categoriesHideShow = false;
+    $scope.soundmenuHideShow = false;
+
+    var loadList = [];
+
+    //console.log(loadList);
+
+    
+
+
+    var delay = false;
+
+
+    for (var i = 0; i < $scope.sounds.length; i++) {
+        $scope.clips[i] = (new Audio($scope.sounds[i].audio));
+    }
+
+    $scope.newSoundParty = function(id){
+        $scope.save();
+
+        if (loadList.length > 0) {
+            var r = window.confirm("Creating a new Sound Party will overwrite your load file! Continue?");
+            if (r == true) {
+                $('textarea').val('');
+                $scope.splashHideShow = false;
+                $scope.soundPartyHideShow = true;
+                console.log('New!')
+
+            } else {
+                console.log("Cancel");
+            }
+        } else {
+            $scope.splashHideShow = false;
+            $scope.soundPartyHideShow = true;
+            console.log('New!');
+        } 
+
+        
+        
+    }
+    $scope.loadSoundParty = function(id){
+        
+        $scope.save();
+
+        //console.log(loadList).length;
+        if (0 < loadList.length) {
+
+            $scope.splashHideShow = false;
+            $scope.soundPartyHideShow = true;
+
+            for (var i = 0; i < loadList.length; i++) {
+                $scope.sounds[loadList[i]].added = true;
+                $scope.togglePlay(loadList[i]);
+                //console.log(loadList[i]);
+          }
+        } else {
+            alert("Your load file is empty. Create a new Sound Party!");
+        }  
+         //console.log('Loading...')
+    }
+
+    $scope.save = function() {
+        var savedArray = document.getElementById("editor1").value;
+        
+        loadList = savedArray.split("").map(Number);
+        //console.log(savedArray);
+        console.log(loadList);
+    }
+
+    $scope.addSound = function(id) {
+        $scope.sounds[id].added = true;
+
+        console.log($scope.sounds[id].added);
+        
+        //add value
+        //console.log(id);
+        var newText = id;
+        document.getElementById("editor1").value += newText;
+
+    }
+
+    $scope.deleteSound = function(id){
+
+        $scope.sounds[id].added = false;
+        $scope.togglePlay(id);
+        
+
+
+        //This deletes the right ids out of the text area
+        var savedArray = document.getElementById("editor1").value;
+        var changeToArray = savedArray.split("").map(Number);
+        var index = changeToArray.indexOf(id);
+        changeToArray.splice(index, 1);
+        $('textarea').val('');
+        // console.log("commas");
+        // console.log(changeToArray);
+        var joinedArray = changeToArray.join("");
+        //changeBack = changeToArray.toString();
+        // console.log("no commas?");
+        // console.log(joinedArray);
+        document.getElementById("editor1").value += joinedArray;
+
+
+        console.log($scope.sounds[id].added);
+
     }
 
 
     $scope.togglePlay = function(id){
-        var selected = $scope.contacts[id];
-        var selectedClip = $scope.clips[id];
-        selectedClip.loop = true;
+        
+        $scope.checkDelay();
 
+        var selected = $scope.sounds[id];
+        var selectedClip = $scope.clips[id];
+        
+
+
+        $scope.checkDelay();
 
         if (selected.isPlaying == false) {
+            selectedClip.loop = true;
             selectedClip.play();
+            console.log('ON');
+
+        } else if (selected.isPlaying == true && $scope.sounds[id].added == true ) {
+            selectedClip.loop = true;
+            selectedClip.play();
+            console.log('ON');
+
+        } 
+
+        if (selected.isPlaying == false && $scope.sounds[id].added == false) {     
+            selectedClip.pause();
+            selectedClip.currentTime = 0;
+            console.log('1OFF');
+            
+            //console.log(selectedClip.currentTime);
 
         } else if (selected.isPlaying == true) {     
             selectedClip.pause();
             selectedClip.currentTime = 0;
-        }
+            console.log('2OFF');
+            }
+      
+        // if (selected.isPlaying == false && $scope.sounds[id].added == true) {     
+        //     selectedClip.play();
+        // }
     };
 
-    $scope.add = function(id){
-
-        console.log("adding corgi head");
-    }
-
-
-// $scope.playBeat = function(){
     
-//     audio.play();
-// };
 
-// $scope.stopBeat = function(){
-//     audio.pause();
-//     audio.currentTime = 0;
-// };
+    $scope.checkDelay = function() {
+        
 
-// $scope.drumBeat = function(){
-    
-//     drum.play();
-// };
+        for (var i = 0; i < $scope.sounds.length; i++) {
+            if ($scope.sounds[i].isPlaying == false) {
+                delay = true;
+            } else {
+                delay = false;
+            }
+        }
+        //console.log(delay);
 
-// $scope.drumStopBeat = function(){
-//     drum.pause();
-//     drum.currentTime = 0;
-// };
+        // if ($scope.clips.length > 0) {
+        //     console.log("add a delay");
+        // }
+    };
 
 
+    $scope.menuToggle = function() {
+        $scope.categoriesHideShow = !$scope.categoriesHideShow;
+        $scope.soundmenuHideShow = false;
+    };
 
-    
-   
-
+    $scope.viewSoundMenu = function() {
+        $scope.soundmenuHideShow = true;
+    };
 });
