@@ -22,20 +22,27 @@
      * and bind it to our string model that we created in initializeModel.
      * @param doc {gapi.drive.realtime.Document} the Realtime document.
      */
+
+     var string;
+
     function onFileLoaded(doc) {
-      var string = doc.getModel().getRoot().get('text');
+      string = doc.getModel().getRoot().get('text');
       //var savelist = doc.getModel().getRoot().get('saveList');
 
       // Keeping one box updated with a String binder.
       var textArea1 = document.getElementById('editor1');
       gapi.drive.realtime.databinding.bindString(string, textArea1);
 
+
+
       //Save list event listener
       //gapi.drive.realtime.databinding.bindString(saveList);
 
       // Keeping one box updated with a custom EventListener.
       var textArea2 = document.getElementById('editor2');
+      gapi.drive.realtime.databinding.bindString(string, textArea2);
       var updateTextArea2 = function(e) {
+        
         textArea2.value = string;
       };
       string.addEventListener(gapi.drive.realtime.EventType.TEXT_INSERTED, updateTextArea2);
@@ -78,7 +85,7 @@
       /**
        * The name of newly created Drive files.
        */
-      defaultTitle: "New Realtime Quickstart File",
+      defaultTitle: "SoundApp Save File",
 
       /**
        * The MIME type of newly created Drive Files. By default the application

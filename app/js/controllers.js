@@ -238,9 +238,9 @@ module.controller('soundController', function ($scope, soundservice) {
         
         //add value
         //console.log(id);
-        var newText = id;
-        document.getElementById("editor1").value += newText;
-
+        var el = document.getElementById("editor1");
+        el.value += id;
+        string.setText(el.value);
     }
 
     $scope.deleteSound = function(id){
@@ -262,7 +262,9 @@ module.controller('soundController', function ($scope, soundservice) {
         //changeBack = changeToArray.toString();
         // console.log("no commas?");
         // console.log(joinedArray);
-        document.getElementById("editor1").value += joinedArray;
+        var el = document.getElementById("editor1");
+        el.value += joinedArray;
+        string.setText(el.value);
 
 
         console.log($scope.sounds[id].added);
