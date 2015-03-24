@@ -231,8 +231,10 @@ module.controller('soundController', function ($scope, soundservice) {
 
     $scope.addSound = function(id) {
         $scope.sounds[id].added = true;
+        $scope.sounds[id].isPlaying = false;
+        $scope.togglePlay(id);
 
-        console.log($scope.sounds[id].added);
+        $scope.nowPlaying.push($scope.clips[id]);
         
         //add value
         //console.log(id);
@@ -244,7 +246,7 @@ module.controller('soundController', function ($scope, soundservice) {
     $scope.deleteSound = function(id){
 
         $scope.sounds[id].added = false;
-        $scope.togglePlay(id);
+        $scope.sounds[id].isPlaying = false;
         
 
 
@@ -269,44 +271,33 @@ module.controller('soundController', function ($scope, soundservice) {
 
 
     $scope.togglePlay = function(id){
-        
+
         $scope.checkDelay();
 
         var selected = $scope.sounds[id];
         var selectedClip = $scope.clips[id];
+        selectedClip.loop = true;
         
+
+        console.log($scope.nowPlaying);
+
+        if ($scope.nowPlaying.length == 0) {
+            console.log('nothing is here');
+        } else {
+            console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime);
+        }
+
 
 
         $scope.checkDelay();
 
         if (selected.isPlaying == false) {
-            selectedClip.loop = true;
             selectedClip.play();
-            console.log('ON');
-
-        } else if (selected.isPlaying == true && $scope.sounds[id].added == true ) {
-            selectedClip.loop = true;
-            selectedClip.play();
-            console.log('ON');
-
-        } 
-
-        if (selected.isPlaying == false && $scope.sounds[id].added == false) {     
-            selectedClip.pause();
-            selectedClip.currentTime = 0;
-            console.log('1OFF');
-            
-            //console.log(selectedClip.currentTime);
 
         } else if (selected.isPlaying == true) {     
             selectedClip.pause();
             selectedClip.currentTime = 0;
-            console.log('2OFF');
-            }
-      
-        // if (selected.isPlaying == false && $scope.sounds[id].added == true) {     
-        //     selectedClip.play();
-        // }
+        }
     };
 
     

@@ -1,3 +1,5 @@
+/* Credit to https://github.com/konsumer/music_player/ */
+
 angular.module('audioPlayer-directive', [])
     .directive('audioPlayer', function($rootScope) {
         return {
@@ -29,6 +31,7 @@ angular.module('audioPlayer-directive', [])
                     $scope.currentNum = currentNum;
                     $scope.totalNum = totalNum;
                 });
+
 
                 // update display of things - makes time-scrub work
                 setInterval(function(){ $scope.$apply(); }, 500);
