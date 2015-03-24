@@ -272,27 +272,31 @@ module.controller('soundController', function ($scope, soundservice) {
 
     $scope.togglePlay = function(id){
 
-        $scope.checkDelay();
-
         var selected = $scope.sounds[id];
         var selectedClip = $scope.clips[id];
         selectedClip.loop = true;
-        
 
-        console.log($scope.nowPlaying);
+
+        var delay;
 
         if ($scope.nowPlaying.length == 0) {
-            console.log('nothing is here');
+            delay = 0;
         } else {
-            console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime);
+            delay = $scope.nowPlaying[0].duration - $scope.nowPlaying[0].currentTime;
+            // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].duration);
+            console.log('delay: ' + delay);
         }
 
 
-
-        $scope.checkDelay();
+        // $scope.getDelay();
 
         if (selected.isPlaying == false) {
-            selectedClip.play();
+            
+            setTimeout(function() { selectedClip.play(); }, delay);
+            // window.setTimeout(selectedClip.play(), 2000);
+            console.log(delay);
+            // selectedClip.play();
+            // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].totalTime);
 
         } else if (selected.isPlaying == true) {     
             selectedClip.pause();
@@ -302,21 +306,18 @@ module.controller('soundController', function ($scope, soundservice) {
 
     
 
-    $scope.checkDelay = function() {
+    $scope.getDelay = function() {
         
+        var delay;
 
-        for (var i = 0; i < $scope.sounds.length; i++) {
-            if ($scope.sounds[i].isPlaying == false) {
-                delay = true;
-            } else {
-                delay = false;
-            }
+        if ($scope.nowPlaying.length == 0) {
+            delay = 0;
+        } else {
+            delay = $scope.nowPlaying[0].duration - $scope.nowPlaying[0].currentTime;
+            // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].duration);
+            console.log('delay: ' + delay);
+            return delay;
         }
-        //console.log(delay);
-
-        // if ($scope.clips.length > 0) {
-        //     console.log("add a delay");
-        // }
     };
 
 
