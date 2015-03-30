@@ -32,15 +32,16 @@
 <!-- <body> -->
 
   <div ng-app="soundApp" ng-controller="soundController">
-    <div ng-show="splashHideShow">
+    <!-- <div ng-show="splashHideShow"> -->
+    <div>
       <a href="javascript:void(0)"  ng-click="newSoundParty()">New</a>
       <a href="javascript:void(0)"  ng-click="loadSoundParty(loadList)">Load</a>
 
     </div>
 
-    <div ng-show="soundPartyHideShow">
+    <!-- <div ng-show="soundPartyHideShow"> -->
 
-      
+    <div id="container">
       
       <div id="menu">
 
@@ -82,9 +83,14 @@
       <div id="soundboard">
         <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay(sound.id); clicky(sound.id);">
 
+
+
             <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'pink': sound.type== 'bass'}">
+              <div class="innerElement">
                 <img ng-src='img/{{ sound.pic }}' />
+              </div>
             </div>
+
 
             <!-- <a href="javascript:void(0)" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</a> -->
 
@@ -106,6 +112,7 @@
   <br />
 
   <script src="js/drive.js"></script>
+</div>
 
 </body>
 </html>
