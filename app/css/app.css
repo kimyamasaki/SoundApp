@@ -1,7 +1,6 @@
 /* app css stylesheet */
 
 html, body, #soundboard {
-  /*min-height: 100% !important;*/
   min-height: 100% !important;
   height: 100%;
   padding: 0;
@@ -16,7 +15,7 @@ html, body, #soundboard {
 	text-align: center;
 	bottom: 0px;
 	z-index: 10;
-	height: 200px;
+	height: 180px;
 	width: 100%;
 	background-color: #313559;
 }
@@ -24,12 +23,18 @@ html, body, #soundboard {
 #submenu {
 	position: fixed;
 	text-align: center;
-	bottom: 200px;
+	bottom: 180px;
 	z-index: 10;
-	height: 200px;
+	height: 160px;
 	width: 100%;
 	background-color: #7e7ce8;
 }
+
+#submenu li {
+	height: 100px;
+	width: 100px;
+}
+
 
 #menu li {
 	display: inline;
@@ -96,7 +101,7 @@ html, body, #soundboard {
 
 
 .textareas {
-	display: block;
+	display: none;
 }
 
 
@@ -118,11 +123,11 @@ html, body, #soundboard {
   left: 50%;
   top: 50%;
   border-radius: 50%;
-  width: 180px;
-  height: 180px;
-  line-height: 80px;
-  margin-left: -40px;
-  margin-top: -40px;
+  width: 160px;
+  height: 160px;
+  line-height: 50px;
+  margin-left: -80px;
+  margin-top: -80px;
   background: #7e7ce8;
   text-align: center;
   
