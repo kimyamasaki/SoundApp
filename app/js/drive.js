@@ -7,7 +7,7 @@
      * @param model {gapi.drive.realtime.Model} the Realtime root model object.
      */
     function initializeModel(model) {
-      var string = model.createString('Hello Realtime World!');
+      var string = model.createString();
       model.getRoot().set('text', string);
 
       //var saveList = model.createList([0]);

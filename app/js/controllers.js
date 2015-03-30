@@ -2,28 +2,27 @@ var module = angular.module('soundApp', []);
 
 module.service('soundservice', function () {
     //to create unique sound id
-    var uid = 2;
+    var uid = 16;
 
     //sounds array to hold list of all sounds
+    //----------------------------BEAT------------------------------------
     var sounds = [{
         id: 0,
         'thumb': '../img/c_portrait_4.png',
-        'pic': '../img/portrait_4.png',
-        // 'body': '../img/corgi_body.png',
-        'name': 'Corgi',
-        'audio': 'audio/bark.wav',
+        'pic': '../img/drum1.gif',
+        'name': 'Beat 1',
+        'audio': 'audio/drum1.wav',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
-        // 'beat': 'rain.mp3',
     },
 
     {
         id: 1,
         'thumb': '../img/c_portrait_1.png',
-        'pic': '../img/portrait_1.png',
-        'name': 'Drum',
-        'audio': 'audio/drum.wav',
+        'pic': '../img/drum2.gif',
+        'name': 'Beat 2',
+        'audio': 'audio/drum2.wav',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -32,68 +31,158 @@ module.service('soundservice', function () {
     {
         id: 2,
         'thumb': '../img/c_portrait_2.png',
-        'pic': '../img/portrait_2.png',
-        'name': 'Bass',
-        'audio': 'audio/bass.wav',
+        'pic': '../img/drum3.gif',
+        'name': 'Beat 3',
+        'audio': 'audio/drum3.wav',
         'added': false,
         'isPlaying': false,
-        'type': 'bass'
+        'type': 'beat'
     },
 
     {
         id: 3,
         'thumb': '../img/c_portrait_3.png',
-        'pic': '../img/portrait_3.png',
-        'name': 'Snare',
-        'audio': 'audio/snare.wav',
+        'pic': '../img/drum4.gif',
+        'name': 'Beat 4',
+        'audio': 'audio/drum4.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'beat'
+    },
+    //----------------------------BASS------------------------------------
+    {
+        id: 4,
+        'thumb': '../img/c_portrait_5.png',
+        'pic': '../img/bass1.gif',
+        'name': 'Bass 1',
+        'audio': 'audio/bass1.wav',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
     },
 
     {
-        id: 4,
-        'thumb': '../img/c_portrait_5.png',
-        'pic': '../img/portrait_5.png',
-        'name': 'Snare',
-        'audio': 'audio/snare.wav',
-        'added': false,
-        'isPlaying': false,
-        'type': 'melody'
-    },
-
-    {
         id: 5,
         'thumb': '../img/c_portrait_6.png',
-        'pic': '../img/portrait_6.png',
-        'name': 'Drum',
-        'audio': 'audio/drum.wav',
+        'pic': '../img/bass2.gif',
+        'name': 'Bass 2',
+        'audio': 'audio/bass2.wav',
         'added': false,
         'isPlaying': false,
-        'type': 'melody'
+        'type': 'bass'
     },
 
     {
         id: 6,
         'thumb': '../img/c_portrait_7.png',
-        'pic': '../img/portrait_7.png',
-        'name': 'Drum',
-        'audio': 'audio/drum.wav',
+        'pic': '../img/bass3.gif',
+        'name': 'Bass 3',
+        'audio': 'audio/bass3.wav',
         'added': false,
         'isPlaying': false,
-        'type': 'vocal'
+        'type': 'bass'
     },
 
     {
         id: 7,
         'thumb': '../img/c_portrait_8.png',
-        'pic': '../img/portrait_8.png',
-        'name': 'Drum',
-        'audio': 'audio/drum.wav',
+        'pic': '../img/bass4.gif',
+        'name': 'Bass 4',
+        'audio': 'audio/bass4.wav',
         'added': false,
         'isPlaying': false,
-        'type': 'vocal'
+        'type': 'bass'
+    },
+    //----------------------------MELODY------------------------------------
+    {
+        id: 8,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/melody1.gif',
+        'name': 'Melody 1',
+        'audio': 'audio/melody1.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'melody'
+    },
+
+    {
+        id: 9,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/melody2.gif',
+        'name': 'Melody 2',
+        'audio': 'audio/melody2.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'melody'
+    },
+
+    {
+        id: 10,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/melody3.gif',
+        'name': 'Melody 3',
+        'audio': 'audio/melody3.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'melody'
+    },
+
+    {
+        id: 11,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/melody4.gif',
+        'name': 'Melody 4',
+        'audio': 'audio/melody4.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'melody'
+    },
+    //----------------------------VOICE------------------------------------
+    {
+        id: 12,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/voice1.gif',
+        'name': 'Voice 1',
+        'audio': 'audio/voice1.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'voice'
+    },
+
+    {
+        id: 13,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/voice2.gif',
+        'name': 'Voice 2',
+        'audio': 'audio/voice2.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'voice'
+    },
+
+    {
+        id: 14,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/voice3.gif',
+        'name': 'Voice 3',
+        'audio': 'audio/voice2.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'voice'
+    },
+
+    {
+        id: 15,
+        'thumb': '../img/c_portrait_8.png',
+        'pic': '../img/voice4.gif',
+        'name': 'Voice 4',
+        'audio': 'audio/voice4.wav',
+        'added': false,
+        'isPlaying': false,
+        'type': 'voice'
     }
+
+  
     
     ];
 
