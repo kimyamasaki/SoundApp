@@ -430,21 +430,21 @@ module.controller('soundController', function ($scope, soundservice) {
         switch (numSounds) {
             case 1:
                 console.log("just 1 sound");
-                $(".tile").css('height', 600 + "px");
+                $(".tile").css('height', 100 + "%");
                 break;
             case 2:
                 console.log("now 2 sounds");
-                $(".tile").css('height', 300 + "px");
+                $(".tile").css('height', 500 + "px");
                 break;
             case 3:
                 console.log("now 3 sounds");
-                $(".tile").css('height', 300 + 'px');
+                $(".tile").css('height', 500 + 'px');
                 $(".tile").css('width', 50 + '%');
                 $(".tile").css('float', 'left');
                 break;
             case 4:
                 console.log("now 4 sounds");
-                $(".tile").css('height', 300 + 'px');
+                $(".tile").css('height', 500 + 'px');
                 $(".tile").css('width', 50 + '%');
                 $(".tile").css('float', 'left');
                 break;
@@ -463,5 +463,10 @@ module.controller('soundController', function ($scope, soundservice) {
     $scope.viewSoundMenu = function() {
         $scope.soundmenuHideShow = true;
     };
+
+    // $scope.start = function() {
+    //     startRealtime();
+    //     newSoundParty();
+    // }
 
 });

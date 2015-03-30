@@ -1,6 +1,6 @@
 /* App Module */
 
-var soundsApp = angular.module('soundsApp', [
+var soundApp = angular.module('soundApp', [
   
   'ngRoute',
   'controllers'
@@ -9,9 +9,11 @@ var soundsApp = angular.module('soundsApp', [
 
 
 
+
 // Gooey Effect: Credit to http://tympanus.net/Development/CreativeGooeyEffects/share.html
 
 $(document).ready(function(){
+
 	var $shareButtons=$(".share-button")
 		,$toggleButton=$("#addButton")
 

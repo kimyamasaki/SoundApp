@@ -42,10 +42,11 @@
     <!-- <div ng-show="soundPartyHideShow"> -->
 
     <div id="container">
+      <button ng-click="save()">Save</button>
       
       <div id="menu">
 
-        <button ng-click="save()">Save</button>
+        
 
         <button id="addButton" ng-click="menuToggle(); filters.type = ''">+</button>
 
@@ -62,7 +63,7 @@
                 <a href="" class="share-button" ng-click="filters.type = 'melody'">Melody</a>
             </li>
             <li class="share-item">
-                <a href="" class="share-button" ng-click="filters.type = 'vocal'">Vocal</a>
+                <a href="" class="share-button" ng-click="filters.type = 'voice'">Vocal</a>
             </li>
           </ul>
 
@@ -102,14 +103,14 @@
 
   <button id="authorizeButton" disabled>You must authorize</button>
 
-  <p>These text areas are on the same page. You can also
-  <a href="#" onclick="window.open(window.location.href);return false;">
-  open them on separate users' browsers</a> and they will remain synchronized.</p>
+  <div class="textareas">
+    <p>These text areas are on the same page. You can also
+    <a href="#" onclick="window.open(window.location.href);return false;">
+    open them on separate users' browsers</a> and they will remain synchronized.</p>
 
-  <!-- Text areas that will be used as our collaborative controls. -->
-  <textarea name="outputtext" id="editor1" rows="15" cols="50" disabled="true"></textarea>
-  <textarea id="editor2" rows="15" cols="50" disabled="true"></textarea>
-  <br />
+    <textarea name="outputtext" id="editor1" rows="15" cols="50" disabled="true"></textarea>
+    <textarea id="editor2" rows="15" cols="50" disabled="true"></textarea>
+  </div>
 
   <script src="js/drive.js"></script>
 <!-- </div> -->
