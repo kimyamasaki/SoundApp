@@ -7,6 +7,26 @@ html, body {
   overflow-x:hidden;
 }
 
+#menu {
+	position: fixed;
+	text-align: center;
+	bottom: 0px;
+	z-index: 10;
+	height: 200px;
+	width: 100%;
+	background-color: #313559;
+}
+
+#submenu {
+	position: fixed;
+	text-align: center;
+	bottom: 200px;
+	z-index: 10;
+	height: 200px;
+	width: 100%;
+	background-color: #7e7ce8;
+}
+
 #menu li {
 	display: inline;
 	list-style-type: none;
@@ -18,4 +38,110 @@ html, body {
 
 .paused {
 	opacity: 0.5;
+}
+
+.tile
+{
+    width: 100%;
+    height: 100%;
+    background-color: yellow;
+    display: block;
+    /*float: left;*/
+}
+
+.tile img {
+	width: 100px;
+	margin: 0 auto;
+}
+
+.green {
+	background-color: #75c597;
+}
+
+.pink {
+	background-color: #dac3be;
+}
+
+
+
+
+
+/*.share {
+  max-width: 600px;
+  height: 100px;
+  margin: 0 auto;
+  -webkit-filter: url("#goo");
+  filter: url("../share.html#goo");
+  position: relative;
+}*/
+
+.share-button,
+#addButton {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  line-height: 80px;
+  margin-left: -40px;
+  margin-top: -40px;
+  background: #7e7ce8;
+  text-align: center;
+  
+  border: none;
+  outline: none;
+}
+
+
+/*#addButton {
+	background-color: #7e7ce8;
+	width: 150px;
+	height: 150px;
+	border-radius: 100px;
+	border: none;
+	color: white;
+	font-size: 75px;
+	font-weight: bold;
+}
+*/
+/*.share-button:hover,
+.share-toggle-button:hover {
+  color: #fff;
+}*/
+
+.share-button {
+  font-size: 30px;
+  background: #7e7ce8;
+  -webkit-transform: scale(0.95, 0.95);
+  transform: scale(0.95, 0.95);
+  color: #222;
+}
+
+a.share-button {
+  color: #7e7ce8;
+}
+
+/*a.share-button:hover,*/ 
+a.share-button:focus {
+  color: #58599f;
+}
+
+#addButton {
+  z-index: 9;
+  background: #7e7ce8;
+  color: #fff;
+  font-size: 75px;
+  font-weight: bold;
+}
+
+.share-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.share-item {
+  display: inline-block;
 }

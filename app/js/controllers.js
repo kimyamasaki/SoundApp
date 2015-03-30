@@ -167,7 +167,7 @@ module.controller('soundController', function ($scope, soundservice) {
 
     //console.log(loadList);
 
-    
+    var numSounds = 0;
 
 
     var delay = false;
@@ -230,25 +230,28 @@ module.controller('soundController', function ($scope, soundservice) {
     }
 
     $scope.addSound = function(id) {
+        numSounds++;
+
         $scope.sounds[id].added = true;
         $scope.sounds[id].isPlaying = false;
         $scope.togglePlay(id);
 
+        $scope.getTileSize();
+
         $scope.nowPlaying.push($scope.clips[id]);
         
-        //add value
-        //console.log(id);
         var el = document.getElementById("editor1");
         el.value += id;
         string.setText(el.value);
     }
 
     $scope.deleteSound = function(id){
+        numSounds--;
 
         $scope.sounds[id].added = false;
         $scope.sounds[id].isPlaying = false;
-        
 
+        $scope.getTileSize();
 
         //This deletes the right ids out of the text area
         var savedArray = document.getElementById("editor1").value;
@@ -273,7 +276,9 @@ module.controller('soundController', function ($scope, soundservice) {
 
 
     $scope.togglePlay = function(id){
+        console.log(numSounds);
 
+        
         var selected = $scope.sounds[id];
         var selectedClip = $scope.clips[id];
         selectedClip.loop = true;
@@ -323,6 +328,36 @@ module.controller('soundController', function ($scope, soundservice) {
     };
 
 
+    $scope.getTileSize = function() {
+
+        switch (numSounds) {
+            case 1:
+                console.log("just 1 sound");
+                $(".tile").css('height', 600 + "px");
+                break;
+            case 2:
+                console.log("now 2 sounds");
+                $(".tile").css('height', 300 + "px");
+                break;
+            case 3:
+                console.log("now 3 sounds");
+                $(".tile").css('height', 300 + 'px');
+                $(".tile").css('width', 50 + '%');
+                $(".tile").css('float', 'left');
+                break;
+            case 4:
+                console.log("now 4 sounds");
+                $(".tile").css('height', 300 + 'px');
+                $(".tile").css('width', 50 + '%');
+                $(".tile").css('float', 'left');
+                break;
+            default:
+                console.log("no sounds!");
+                break;
+        }
+    };
+
+
     $scope.menuToggle = function() {
         $scope.categoriesHideShow = !$scope.categoriesHideShow;
         $scope.soundmenuHideShow = false;
@@ -331,4 +366,5 @@ module.controller('soundController', function ($scope, soundservice) {
     $scope.viewSoundMenu = function() {
         $scope.soundmenuHideShow = true;
     };
+
 });
