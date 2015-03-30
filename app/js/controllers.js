@@ -313,7 +313,7 @@ module.controller('soundController', function ($scope, soundservice) {
     $scope.save = function() {
         var savedArray = document.getElementById("editor1").value;
         
-        loadList = savedArray.split("").map(Number);
+        loadList = savedArray.split(" ").map(Number);
         //console.log(savedArray);
         console.log(loadList);
     }
@@ -331,7 +331,7 @@ module.controller('soundController', function ($scope, soundservice) {
         
         var el = document.getElementById("editor1");
         el.value += id;
-        string.setText(el.value);
+        string.setText(el.value + " ");
     }
 
     $scope.deleteSound = function(id){
@@ -344,22 +344,30 @@ module.controller('soundController', function ($scope, soundservice) {
 
         //This deletes the right ids out of the text area
         var savedArray = document.getElementById("editor1").value;
-        var changeToArray = savedArray.split("").map(Number);
+        // console.log("BEFORE");
+        // console.log(savedArray);
+        var changeToArray = savedArray.split(" ").map(Number);
+        // console.log("LAST ITEM IS 0???");
+        // console.log(changeToArray[changeToArray.length-1]);
+        if (changeToArray[changeToArray.length-1] == 0){
+                changeToArray.pop();
+            }
+        //.map(Number);
+        //console.log("MY ARRAY");
+        //console.log(changeToArray);
         var index = changeToArray.indexOf(id);
         changeToArray.splice(index, 1);
         $('textarea').val('');
-        // console.log("commas");
-        // console.log(changeToArray);
-        var joinedArray = changeToArray.join("");
-        //changeBack = changeToArray.toString();
-        // console.log("no commas?");
-        // console.log(joinedArray);
+        //console.log($'textarea');
+       
+        var joinedArray = changeToArray.join(" ");
+        // ////changeBack = changeToArray.toString();
+        
         var el = document.getElementById("editor1");
         el.value += joinedArray;
+        //console.log("JOINED ARRAY");
+        //console.log(joinedArray);
         string.setText(el.value);
-
-
-        console.log($scope.sounds[id].added);
 
     }
 
