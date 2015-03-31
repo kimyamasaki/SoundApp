@@ -249,7 +249,7 @@ module.controller('soundController', function ($scope, soundservice) {
 
     $scope.splashHideShow = true;
     $scope.soundPartyHideShow = false;
-    $scope.categoriesHideShow = false;
+    // $scope.categoriesHideShow = true;
     $scope.soundmenuHideShow = false;
 
     var loadList = [];
@@ -303,6 +303,8 @@ module.controller('soundController', function ($scope, soundservice) {
                 $scope.sounds[loadList[i]].added = true;
                 $scope.togglePlay(loadList[i]);
                 //console.log(loadList[i]);
+
+                $scope.getTileSize();
           }
         } else {
             alert("Your load file is empty. Create a new Sound Party!");
@@ -314,6 +316,10 @@ module.controller('soundController', function ($scope, soundservice) {
         var savedArray = document.getElementById("editor1").value;
         
         loadList = savedArray.split(" ").map(Number);
+
+        if (loadList[loadList.length-1] == 0){
+                loadList.pop();
+            }
         //console.log(savedArray);
         console.log(loadList);
     }
@@ -430,7 +436,7 @@ module.controller('soundController', function ($scope, soundservice) {
         switch (numSounds) {
             case 1:
                 console.log("just 1 sound");
-                $(".tile").css('height', 100 + "%");
+                $(".tile").css('height', 1600 + "px");
                 break;
             case 2:
                 console.log("now 2 sounds");
@@ -467,12 +473,13 @@ module.controller('soundController', function ($scope, soundservice) {
     };
 
 
-    $scope.menuToggle = function() {
-        $scope.categoriesHideShow = !$scope.categoriesHideShow;
-        $scope.soundmenuHideShow = false;
-    };
+    // $scope.menuToggle = function() {
+    //     $scope.categoriesHideShow = !$scope.categoriesHideShow;
+    //     $scope.soundmenuHideShow = false;
+    // };
 
     $scope.viewSoundMenu = function() {
+        // $scope.soundmenuHideShow = !$scope.soundmenuHideShow;
         $scope.soundmenuHideShow = true;
     };
 
