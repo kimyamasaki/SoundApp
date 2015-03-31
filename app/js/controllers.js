@@ -434,17 +434,29 @@ module.controller('soundController', function ($scope, soundservice) {
                 break;
             case 2:
                 console.log("now 2 sounds");
-                $(".tile").css('height', 500 + "px");
+                $(".tile").css('height', 800 + "px");
                 break;
             case 3:
                 console.log("now 3 sounds");
-                $(".tile").css('height', 500 + 'px');
+                $(".tile").css('height', 800 + 'px');
                 $(".tile").css('width', 50 + '%');
                 $(".tile").css('float', 'left');
                 break;
             case 4:
                 console.log("now 4 sounds");
-                $(".tile").css('height', 500 + 'px');
+                $(".tile").css('height', 800 + 'px');
+                $(".tile").css('width', 50 + '%');
+                $(".tile").css('float', 'left');
+                break;
+            case 5:
+                console.log("now 4 sounds");
+                $(".tile").css('height', 550 + 'px');
+                $(".tile").css('width', 50 + '%');
+                $(".tile").css('float', 'left');
+                break;
+            case 6:
+                console.log("now 4 sounds");
+                $(".tile").css('height', 550 + 'px');
                 $(".tile").css('width', 50 + '%');
                 $(".tile").css('float', 'left');
                 break;

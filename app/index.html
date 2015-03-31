@@ -19,7 +19,7 @@
   <script src="bower_components/EventEmitter/EventEmitter.min.js"></script>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="js/TweenMax.min.js"></script>
+  <!--<script src="js/TweenMax.min.js"></script>-->
 
   <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
   <script type="text/javascript" src="js/realtime-client-utils.js"></script>
@@ -33,87 +33,89 @@
 
   <div ng-app="soundApp" ng-controller="soundController">
     <!-- <div ng-show="splashHideShow"> -->
-    <div>
-      <a href="javascript:void(0)"  ng-click="newSoundParty()">New</a>
-      <a href="javascript:void(0)"  ng-click="loadSoundParty(loadList)">Load</a>
-
+    <div id="topMenu">
+      <button ng-click="newSoundParty()">Clear All</button>
+      <button ng-click="loadSoundParty(loadList)">Load</button>
+      <button ng-click="save()">Save</button>
     </div>
 
     <!-- <div ng-show="soundPartyHideShow"> -->
-
-    <div id="container">
-      <button ng-click="save()">Save</button>
       
-      <div id="menu">
+    <div id="menu">
 
-        
+      <button id="addButton" ng-click="menuToggle(); filters.type = ''">+</button>
 
-        <button id="addButton" ng-click="menuToggle(); filters.type = ''">+</button>
+      <div id="soundCategories" ng-show="categoriesHideShow" ng-click="viewSoundMenu()">
 
-        <div ng-show="categoriesHideShow" ng-click="viewSoundMenu()">
+        <!-- <ul class="share-items">
+          <li class="share-item">
+              <a href="" class="share-button" ng-click="filters.type = 'beat'">Beat</a>
+          </li>
+          <li class="share-item">
+              <a href="" class="share-button" ng-click="filters.type = 'bass'">Bass</a>
+          </li>
+          <li class="share-item">
+              <a href="" class="share-button" ng-click="filters.type = 'melody'">Melody</a>
+          </li>
+          <li class="share-item">
+              <a href="" class="share-button" ng-click="filters.type = 'voice'">Vocal</a>
+          </li>
+        </ul> -->
 
-          <ul class="share-items">
-            <li class="share-item">
-                <a href="" class="share-button" ng-click="filters.type = 'beat'">Beat</a>
-            </li>
-            <li class="share-item">
-                <a href="" class="share-button" ng-click="filters.type = 'bass'">Bass</a>
-            </li>
-            <li class="share-item">
-                <a href="" class="share-button" ng-click="filters.type = 'melody'">Melody</a>
-            </li>
-            <li class="share-item">
-                <a href="" class="share-button" ng-click="filters.type = 'voice'">Vocal</a>
-            </li>
-          </ul>
+        <button ng-click="filters.type = 'beat'">Beat</button>
+        <button ng-click="filters.type = 'bass'">Bass</button>
+        <div class="spacer"></div>
+        <button ng-click="filters.type = 'melody'">Melody</button>
+        <button ng-click="filters.type = 'voice'">Vocal</button>
 
-        </div>
-
-
-        <div id="submenu" ng-show="soundmenuHideShow">
-            <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id)">
-                      
-                <img ng-src='img/{{ sound.thumb }}' ng-click="sound.added = !sound.added" ng-class="{added: sound.added}" />
-
-            </li>
-        </div>
       </div>
 
 
+      <div id="submenu" ng-show="soundmenuHideShow">
+          <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id)">
+                    
+              <img ng-src='img/{{ sound.thumb }}' ng-click="sound.added = !sound.added" ng-class="{added: sound.added}" />
 
-      <div id="soundboard">
-        <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay(sound.id); clicky(sound.id);">
+          </li>
+      </div>
+    </div>
 
 
 
-            <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'pink': sound.type== 'bass'}">
-              <div class="innerElement">
-                <img ng-src='img/{{ sound.pic }}' />
-              </div>
+    <div id="soundboard">
+      <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay(sound.id); clicky(sound.id);">
+
+
+
+          <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type== 'bass', 'blue': sound.type== 'voice', 'yellow': sound.type== 'melody'}">
+            <div class="innerElement">
+              <img ng-src='img/{{ sound.pic }}' />
             </div>
+          </div>
 
 
-            <!-- <a href="javascript:void(0)" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</a> -->
+          <!-- <a href="javascript:void(0)" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</a> -->
 
-        </div>
       </div>
     </div>
 
     <!-- <h1>----IGNORE BELOW FOR NOW----</h1> -->
 
-  <button id="authorizeButton" disabled>You must authorize</button>
+    
 
-  <div class="textareas">
-    <p>These text areas are on the same page. You can also
-    <a href="#" onclick="window.open(window.location.href);return false;">
-    open them on separate users' browsers</a> and they will remain synchronized.</p>
+    <div class="textareas">
+      <button id="authorizeButton" disabled>You must authorize</button>
 
-    <textarea name="outputtext" id="editor1" rows="15" cols="50" disabled="true"></textarea>
-    <textarea id="editor2" rows="15" cols="50" disabled="true"></textarea>
+      <p>These text areas are on the same page. You can also
+      <a href="#" onclick="window.open(window.location.href);return false;">
+      open them on separate users' browsers</a> and they will remain synchronized.</p>
+
+      <textarea name="outputtext" id="editor1" rows="15" cols="50" disabled="true"></textarea>
+      <textarea id="editor2" rows="15" cols="50" disabled="true"></textarea>
+    </div>
+
+    <script src="js/drive.js"></script>
   </div>
-
-  <script src="js/drive.js"></script>
-<!-- </div> -->
 
 </body>
 </html>
