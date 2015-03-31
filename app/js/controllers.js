@@ -314,8 +314,14 @@ module.controller('soundController', function ($scope, soundservice) {
         var savedArray = document.getElementById("editor1").value;
         
         loadList = savedArray.split(" ").map(Number);
+        if (loadList[loadList.length-1] == 0){
+                loadList.pop();
+            }
+
+
+
         //console.log(savedArray);
-        console.log(loadList);
+        //console.log(loadList);
     }
 
     $scope.addSound = function(id) {
