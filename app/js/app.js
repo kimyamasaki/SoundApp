@@ -8,6 +8,10 @@ var soundApp = angular.module('soundApp', [
 ]);
 
 
+// $("#beat").click(function () {
+// 	console.log('clicked beat');
+//     $(this).toggleClass("beat");
+// });
 
 
 // Gooey Effect: Credit to http://tympanus.net/Development/CreativeGooeyEffects/share.html
