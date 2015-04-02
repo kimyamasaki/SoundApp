@@ -18,7 +18,7 @@
   <div ng-app="soundApp" ng-controller="soundController">
     <!-- <div ng-show="splashHideShow"> -->
     <div id="topMenu">
-      <button ng-click="newSoundParty()">Clear All</button>
+      <button ng-click="newSoundParty()">Clear</button>
       <button ng-click="loadSoundParty(loadList)">Load</button>
       <!-- <button ng-click="save()">Save</button> -->
     </div>
@@ -61,7 +61,7 @@
 
 
 
-          <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type== 'bass', 'blue': sound.type== 'voice', 'yellow': sound.type== 'melody'}">
+          <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type == 'bass', 'blue': sound.type == 'voice', 'yellow': sound.type == 'melody'}">
             <div class="innerElement">
               <img ng-src='img/{{ sound.pic }}' />
             </div>
@@ -101,8 +101,6 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/hammer.js/hammer.js"></script>
   <script src="bower_components/EventEmitter/EventEmitter.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-
   <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
   <script type="text/javascript" src="js/realtime-client-utils.js"></script>
   

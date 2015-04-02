@@ -240,7 +240,10 @@ module.service('soundservice', function () {
 
 });
 
-module.controller('soundController', function ($scope, soundservice) {
+module.controller('soundController', function ($scope, $window, soundservice) {
+
+    $scope.windowHeight = $window.innerHeight - 70;
+    console.log($scope.windowHeight);
 
     $scope.sounds = soundservice.list(); 
     $scope.clips = [];
@@ -338,6 +341,11 @@ module.controller('soundController', function ($scope, soundservice) {
         var el = document.getElementById("editor1");
         el.value += id;
         string.setText(el.value + " ");
+
+
+        // var greens = ['#ff0000', '#00ff00', '#0000ff'];
+        // var random_color = greens[Math.floor(Math.random() * greens.length)];
+        // $(".green").css('background', random_color);
     }
 
     $scope.deleteSound = function(id){
@@ -436,35 +444,37 @@ module.controller('soundController', function ($scope, soundservice) {
         switch (numSounds) {
             case 1:
                 console.log("just 1 sound");
-                $(".tile").css('height', 100 + "%");
+                $(".tile").css('height', $scope.windowHeight + 'px');
                 break;
             case 2:
                 console.log("now 2 sounds");
-                $(".tile").css('height', 800 + "px");
+                $(".tile").css('height', $scope.windowHeight/2 + 'px');
+                $(".tile img").css('height', 180 + 'px');
+                $(".tile").css('line-height', ($scope.windowHeight/2) + 'px');
                 break;
             case 3:
                 console.log("now 3 sounds");
-                $(".tile").css('height', 800 + 'px');
+                $(".tile").css('height', $scope.windowHeight/2 + 'px');
                 $(".tile").css('width', 50 + '%');
-                $(".tile").css('float', 'left');
+                $(".tile img").css('height', 140 + 'px');
                 break;
             case 4:
                 console.log("now 4 sounds");
-                $(".tile").css('height', 800 + 'px');
-                $(".tile").css('width', 50 + '%');
-                $(".tile").css('float', 'left');
                 break;
             case 5:
                 console.log("now 4 sounds");
-                $(".tile").css('height', 550 + 'px');
-                $(".tile").css('width', 50 + '%');
-                $(".tile").css('float', 'left');
+                $(".tile").css('height', $scope.windowHeight/3 + 'px');
+                $(".tile img").css('height', 120 + 'px');
+                $(".tile").css('line-height', ($scope.windowHeight/3) + 'px');
                 break;
             case 6:
                 console.log("now 4 sounds");
-                $(".tile").css('height', 550 + 'px');
-                $(".tile").css('width', 50 + '%');
-                $(".tile").css('float', 'left');
+                break;
+            case 7:
+                console.log("now 4 sounds");
+                $(".tile").css('height', $scope.windowHeight/4 + 'px');
+                $(".tile img").css('height', 120 + 'px');
+                $(".tile").css('line-height', ($scope.windowHeight/4) + 'px');
                 break;
             default:
                 console.log("no sounds!");
