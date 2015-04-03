@@ -285,7 +285,7 @@ module.controller('soundController', function ($scope, $window, soundservice) {
     $scope.splashHideShow = true;
     $scope.soundPartyHideShow = false;
     // $scope.categoriesHideShow = true;
-    $scope.soundmenuHideShow = false;
+    // $scope.soundmenuHideShow = false;
 
     var loadList = [];
 
@@ -359,20 +359,6 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         console.log(loadList);
     }
 
-    var called = false;
-    $scope.toggleAddDel = function(id) {
-        
-
-        if (called) {
-            $scope.deleteSound(id);
-            called = false;
-
-        } else {
-            
-            $scope.addSound(id);
-            called = true;
-        }
-    }
 
     $scope.addSound = function(id) {
         
@@ -408,7 +394,7 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         // var greens = ['#ff0000', '#00ff00', '#0000ff'];
         // var random_color = greens[Math.floor(Math.random() * greens.length)];
         // $(".green").css('background', random_color);
-    }
+    };
 
     $scope.deleteSound = function(id){
         numSounds--;
@@ -457,7 +443,7 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         //console.log(joinedArray);
         string.setText(el.value);
 
-    }
+    };
 
 
     $scope.togglePlay = function(id){
@@ -561,10 +547,30 @@ module.controller('soundController', function ($scope, $window, soundservice) {
     //     $scope.soundmenuHideShow = false;
     // };
 
-    $scope.viewSoundMenu = function() {
-        // $scope.soundmenuHideShow = !$scope.soundmenuHideShow;
-        $scope.soundmenuHideShow = true;
+
+    $scope.checky = function() {
+        
+        // can't check more than one checkbox at a time
+        $(":checkbox").on('change', function () {
+            $('[name="' + $(this).attr('name') + '"]').not(this).prop('checked', false);
+        });
+
+        // check if at least one checkbox is selected
+        var checkAtLeastOne = false;
+        $('input[type="checkbox"]').each(function() {
+            if ($(this).is(":checked")) {
+                checkAtLeastOne = true;
+            }
+        });
+
+        // toggle submenu
+        if (checkAtLeastOne) {
+            $scope.soundmenuHideShow = true;
+        } else {
+            $scope.soundmenuHideShow = false;
+        }
     };
+
 
     // $scope.toggleBeat = function() {
     //     // $scope.soundmenuHideShow = !$scope.soundmenuHideShow;

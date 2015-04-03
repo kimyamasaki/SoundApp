@@ -20,18 +20,20 @@ html, body {
 	background-color: #313559;
 }
 
+
+
 #submenu {
 	position: absolute;
-	bottom: 80px;
+	bottom: 76px;
   left: 0;
   right: 0;
   margin: 0 auto;
 	z-index: 10;
-	height: 42px;
+	height: 44px;
 	width: 90%;
   border-radius: 22px;
 	background-color: #f4f3ef;
-  border-bottom: 2px solid rgba(0,0,0,0.1);
+  /*border-bottom: 2px solid rgba(0,0,0,0.1);*/
   text-align: center;
 }
 
@@ -39,20 +41,20 @@ html, body {
   margin-top: 6px;
   margin-left: -38px;
 }
+
  li {
   background-color: #e2dfd9;
  }
+
 #submenu li {
   display: inline;
   list-style-type: none;
   font-size: 20px;
   font-weight: 700;
-  padding: 1px 8.5% 4px 8.5%;
+  padding: 2px 8.5% 6px 8.5%;
   margin-left: 4px;
   margin-right: 4px;
   text-align: center;
-
-  /*border: 2px dashed #cec8b2;*/
   
   border-radius: 20px;
   border-top: 2px solid rgba(0,0,0,0.1);
@@ -68,6 +70,54 @@ html, body {
   -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] + label {
+    height: 75px;
+    width: 60px;
+    display:inline-block;
+}
+
+input#beat[type="checkbox"] + label {
+    background: url('../img/beat_icon1.png');
+}
+
+input#beat[type="checkbox"]:checked + label {
+    background: url('../img/beat_icon2.png');
+}
+
+input#bass[type="checkbox"] + label {
+    background: url('../img/bass_icon1.png');
+}
+
+input#bass[type="checkbox"]:checked + label {
+    background: url('../img/bass_icon2.png');
+}
+
+
+input#melody[type="checkbox"] + label {
+    background: url('../img/melody_icon1.png');
+}
+
+input#melody[type="checkbox"]:checked + label {
+    background: url('../img/melody_icon2.png');
+}
+
+
+input#voice[type="checkbox"] + label {
+    background: url('../img/vocal_icon1.png');
+}
+
+input#voice[type="checkbox"]:checked + label {
+    background: url('../img/vocal_icon2.png');
+}
+
+
+
 
 
 #topMenu {
@@ -89,36 +139,9 @@ html, body {
   color: white;
 }
 
-#soundCategories img {
-  margin: 5px;
-  width: 56px;
-  height: auto;
-  float: left;
+#categories {
+  margin: -6px 2% 0 2%;
 }
-
-#soundCategories button {
-  background-color: transparent;
-  /*background-image: url('../img/beat_icon1.png');*/
-  /*height: 56px;
-  width: 56px;*/
-  border: none;
-  margin-top: 5px;
-}
-
-.pressed {
-  /*background-image: url('../img/beat_icon2.png');*/
-}
-
-/*#soundCategories button {
-  height: 58px;
-  width: 58px;
-  border-radius: 50%;
-  background-color: #7e7ce8;
-  margin: 3px;
-  border: none;
-  font-size: 16px;
-  color: white;
-}*/
 
 .paused {
 	opacity: 0.5;
@@ -177,92 +200,11 @@ html, body {
   background: #f7d569;
 }
 
-
+.deleteButton {
+  z-index: 10;
+}
 
 
 .textareas {
 	display: none;
-}
-
-
-
-
-/*.share {
-  max-width: 600px;
-  height: 100px;
-  margin: 0 auto;
-  -webkit-filter: url("#goo");
-  filter: url("../share.html#goo");
-  position: relative;
-}*/
-
-.share-button,
-#addButton {
-  position: absolute;
-  display: inline-block;
-  left: 50%;
-  top: 50%;
-  border-radius: 50%;
-  width: 160px;
-  height: 160px;
-  line-height: 50px;
-  margin-left: -80px;
-  margin-top: -80px;
-  background: #7e7ce8;
-  text-align: center;
-  
-  border: none;
-  outline: none;
-}
-
-
-/*#addButton {
-	background-color: #7e7ce8;
-	width: 150px;
-	height: 150px;
-	border-radius: 100px;
-	border: none;
-	color: white;
-	font-size: 75px;
-	font-weight: bold;
-}
-*/
-/*.share-button:hover,
-.share-toggle-button:hover {
-  color: #fff;
-}*/
-
-.share-button {
-  font-size: 30px;
-  background: #7e7ce8;
-  -webkit-transform: scale(0.95, 0.95);
-  transform: scale(0.95, 0.95);
-  color: #222;
-}
-
-a.share-button {
-  color: #7e7ce8;
-}
-
-/*a.share-button:hover,*/ 
-a.share-button:focus {
-  color: #58599f;
-}
-
-#addButton {
-  z-index: 9;
-  background: #7e7ce8;
-  color: #fff;
-  font-size: 75px;
-  font-weight: bold;
-}
-
-.share-items {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.share-item {
-  display: inline-block;
 }
