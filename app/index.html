@@ -30,17 +30,51 @@
       <!-- <button id="addButton" ng-click="menuToggle(); filters.type = ''">+</button> -->
 
       <div id="soundCategories" ng-click="viewSoundMenu()">
+        <div ng-repeat="type in types">          
+            <img ng-src= './img/{{ type.default }}' ng-click="isActive = !isActive; filters.type = type.category" />
 
-        <a id="beat" href="" ng-click="filters.type = 'beat'"><img src="./img/beat_icon1.png" /></a>
+
+
+            
+
+        </div>
+
+        <!-- <a id="beat" href="" ng-click="filters.type = 'beat'" ng-class"{true: 'btn-primary', false: 'btn-danger'}[!pressed]"><img src="./img/beat_icon1.png" /></a>
         <a id="bass" href="" ng-click="filters.type = 'bass'"><img src="./img/bass_icon1.png" /></a>
         <a id="melody" href="" ng-click="filters.type = 'melody'"><img src="./img/melody_icon1.png" /></a>
         <a id="voice" href="" ng-click="filters.type = 'voice'"><img src="./img/vocal_icon1.png" /></a>
+        <a href="" ng-click="save()">Save</a> -->
+        <!-- <div ng-repeat="type in types">
+          <img src="./img/{{ type.default }}" />
+        </div> -->
+
+      
+
+        <!-- <button id="beat" href="" ng-click="isPressed = !isPressed; filters.type = 'beat'" ng-class="{pressed: isPressed}">
+        </button>
+
+        <a id="bass" href="" ng-click="filters.type = 'bass'">
+          <img src="./img/bass_icon1.png" />
+        </a>
+
+        <a id="melody" href="" ng-click="filters.type = 'melody'">
+          <img src="./img/melody_icon1.png" />
+        </a>
+
+        <a id="voice" href="" ng-click="filters.type = 'voice'">
+          <img src="./img/vocal_icon1.png" />
+        </a> -->
+
+
         <a href="" ng-click="save()">Save</a>
 
       </div>
 
-
       <div id="submenu" ng-show="soundmenuHideShow">
+          <!-- <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id)">          
+              <img ng-src='img/{{ sound.thumb }}' ng-click="sound.added = !sound.added" ng-class="{added: sound.added}" />
+          </li> -->
+
           <!-- <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id)">          
               <img ng-src='img/{{ sound.thumb }}' ng-click="sound.added = !sound.added" ng-class="{added: sound.added}" />
           </li> -->
@@ -51,19 +85,19 @@
             </li>
           </ul>
 
-      </div>
+      </div>  
     </div>
 
 
 
     <div id="soundboard">
-      <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay(sound.id); clicky(sound.id);">
+      <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay(sound.id);">
 
 
 
           <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type == 'bass', 'blue': sound.type == 'voice', 'yellow': sound.type == 'melody'}">
             <div class="innerElement">
-              <img ng-src='img/{{ sound.pic }}' />
+              <img ng-src='./img/{{ sound.pic }}' />
             </div>
           </div>
 

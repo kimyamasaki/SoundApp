@@ -187,6 +187,10 @@ module.service('soundservice', function () {
     ];
 
 
+    
+
+
+
     //$scope.groups = [];
     //console.log(sounds[0]);
 
@@ -236,14 +240,44 @@ module.service('soundservice', function () {
         return sounds;
     }
 
-
-
 });
 
 module.controller('soundController', function ($scope, $window, soundservice) {
 
+
+    $scope.types = [{
+        id: 0,
+        'default': '../img/beat_icon1.png',
+        'pressed': '../img/beat_icon2.png',
+        'category': 'beat'
+    },
+
+    {
+        id: 1,
+        'default': 'bass_icon1.png',
+        'pressed': '../img/bass_icon2.png',
+        'category': 'bass'
+    },
+
+    {
+        id: 2,
+        'default': 'melody_icon1.png',
+        'pressed': '../img/melody_icon2.png',
+        'category': 'melody'
+    },
+
+    {
+        id: 3,
+        'default': 'vocal_icon1.png',
+        'pressed': '../img/vocal_icon2.png',
+        'category': 'voice'
+    }
+    ];
+
+
+
     $scope.windowHeight = $window.innerHeight - 70;
-    console.log($scope.windowHeight);
+    // console.log($scope.windowHeight);
 
     $scope.sounds = soundservice.list(); 
     $scope.clips = [];
@@ -327,16 +361,46 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         console.log(loadList);
     }
 
+    var called = false;
+    $scope.toggleAddDel = function(id) {
+        
+
+        if (called) {
+            $scope.deleteSound(id);
+            called = false;
+
+        } else {
+            
+            $scope.addSound(id);
+            called = true;
+        }
+    }
+
     $scope.addSound = function(id) {
-        numSounds++;
+        
 
-        $scope.sounds[id].added = true;
-        $scope.sounds[id].isPlaying = false;
-        $scope.togglePlay(id);
+        // check if the sound is already on the soundboard
+        if ($.inArray($scope.clips[id], $scope.nowPlaying) != -1) {
 
-        $scope.getTileSize();
+            $scope.deleteSound(id);
 
-        $scope.nowPlaying.push($scope.clips[id]);
+        } else {
+
+            numSounds++;
+            $scope.nowPlaying.push($scope.clips[id]);
+            $scope.sounds[id].added = true;
+            $scope.sounds[id].isPlaying = false;
+            $scope.togglePlay(id);
+
+            $scope.getTileSize();
+
+            console.log($scope.nowPlaying);
+        }
+        
+
+
+
+        console.log("number of sounds: " + numSounds);
         
         var el = document.getElementById("editor1");
         el.value += id;
@@ -352,9 +416,21 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         numSounds--;
 
         $scope.sounds[id].added = false;
-        $scope.sounds[id].isPlaying = false;
+        $scope.sounds[id].isPlaying = true;
+        $scope.togglePlay(id);
 
         $scope.getTileSize();
+        console.log("number of sounds: " + numSounds);
+
+        for(var i = $scope.nowPlaying.length - 1; i >= 0; i--) {
+            if($scope.nowPlaying[i] === $scope.clips[id]) {
+               $scope.nowPlaying.splice(i, 1);
+            }
+        }
+
+        console.log($scope.nowPlaying);
+
+        // $scope.nowPlaying.push($scope.clips[id]);
 
         //This deletes the right ids out of the text area
         var savedArray = document.getElementById("editor1").value;
@@ -397,13 +473,13 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
         var delay;
 
-        if ($scope.nowPlaying.length == 0) {
-            delay = 0;
-        } else {
-            delay = $scope.nowPlaying[0].duration - $scope.nowPlaying[0].currentTime;
-            // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].duration);
-            console.log('delay: ' + delay);
-        }
+        // if ($scope.nowPlaying.length == 0) {
+        //     delay = 0;
+        // } else {
+        //     delay = $scope.nowPlaying[0].duration - $scope.nowPlaying[0].currentTime;
+        //     // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].duration);
+        //     console.log('delay: ' + delay);
+        // }
 
 
         // $scope.getDelay();
@@ -445,10 +521,14 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             case 1:
                 console.log("just 1 sound");
                 $(".tile").css('height', $scope.windowHeight + 'px');
+                $(".tile").css('width', 100 + '%');
+                $(".tile img").css('height', 200 + 'px');
+                $(".tile").css('line-height', (540) + 'px');
                 break;
             case 2:
                 console.log("now 2 sounds");
                 $(".tile").css('height', $scope.windowHeight/2 + 'px');
+                $(".tile").css('width', 100 + '%');
                 $(".tile img").css('height', 180 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/2) + 'px');
                 break;
@@ -460,18 +540,30 @@ module.controller('soundController', function ($scope, $window, soundservice) {
                 break;
             case 4:
                 console.log("now 4 sounds");
+                $(".tile").css('height', $scope.windowHeight/2 + 'px');
+                $(".tile").css('width', 50 + '%');
+                $(".tile img").css('height', 140 + 'px');
                 break;
             case 5:
-                console.log("now 4 sounds");
+                console.log("now 5 sounds");
                 $(".tile").css('height', $scope.windowHeight/3 + 'px');
                 $(".tile img").css('height', 120 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/3) + 'px');
                 break;
             case 6:
-                console.log("now 4 sounds");
+                console.log("now 6 sounds");
+                $(".tile").css('height', $scope.windowHeight/3 + 'px');
+                $(".tile img").css('height', 120 + 'px');
+                $(".tile").css('line-height', ($scope.windowHeight/3) + 'px');
                 break;
             case 7:
-                console.log("now 4 sounds");
+                console.log("now 7 sounds");
+                $(".tile").css('height', $scope.windowHeight/4 + 'px');
+                $(".tile img").css('height', 120 + 'px');
+                $(".tile").css('line-height', ($scope.windowHeight/4) + 'px');
+                break;
+            case 8:
+                console.log("now 8 sounds");
                 $(".tile").css('height', $scope.windowHeight/4 + 'px');
                 $(".tile img").css('height', 120 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/4) + 'px');
