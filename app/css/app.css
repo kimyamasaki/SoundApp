@@ -6,9 +6,8 @@ html, body {
   padding: 0;
   margin: 0;
   background: #4b526d;
-  /*font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px;
-  overflow-x:hidden;*/
+  font-family: 'Roboto', sans-serif;
+  font-color: #313559;
 }
 
 #menu {
@@ -28,17 +27,48 @@ html, body {
   right: 0;
   margin: 0 auto;
 	z-index: 10;
-	height: 40px;
+	height: 42px;
 	width: 90%;
-  border-radius: 20px;
+  border-radius: 22px;
 	background-color: #f4f3ef;
   border-bottom: 2px solid rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-#submenu li {
-	height: 40px;
-	width: 40px;
+#submenu ul {
+  margin-top: 6px;
+  margin-left: -38px;
 }
+ li {
+  background-color: #e2dfd9;
+ }
+#submenu li {
+  display: inline;
+  list-style-type: none;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 1px 8.5% 4px 8.5%;
+  margin-left: 4px;
+  margin-right: 4px;
+  text-align: center;
+
+  /*border: 2px dashed #cec8b2;*/
+  
+  border-radius: 20px;
+  border-top: 2px solid rgba(0,0,0,0.1);
+}
+
+.added {
+  background-color: #444c6b;
+  color: white;
+  border: 0px;
+
+  -webkit-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 
 #topMenu {
   position: fixed;
@@ -57,10 +87,6 @@ html, body {
   border: none;
   font-size: 16px;
   color: white;
-}
-
-#soundCategories {
-  /*position: absolute;*/
 }
 
 #soundCategories img {
@@ -94,25 +120,13 @@ html, body {
   color: white;
 }*/
 
-.spacer {
-  width: 200px;
-  height: 20px;
-  /*background: red;*/
-  display: inline-block;
-}
-
-
-#menu li {
-	display: inline;
-	list-style-type: none;
-}
-
-.added {
-	opacity: 0.5;
-}
-
 .paused {
 	opacity: 0.5;
+
+  -webkit-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #soundboard {
@@ -122,21 +136,17 @@ html, body {
 }
 
 .tile {
-    /*margin: auto;*/
-    display: block;
-    width: 100%;
-    height: 100%;
-    /*border : 1px solid #CFCFCF;
-    border-radius:6px;
-    background-color:#EFEFEF;*/
-    text-align: center;
-    line-height: 540px;
-    float: left;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 540px;
+  float: left;
 
-    -webkit-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    -moz-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .tile img {
@@ -144,11 +154,15 @@ html, body {
 }
 
 .inner-element {
-    display: inline-block;
+  display: inline-block;
 }
 
 .green {
 	background: #93c65d;
+  -webkit-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .red {

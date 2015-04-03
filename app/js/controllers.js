@@ -10,7 +10,7 @@ module.service('soundservice', function () {
         id: 0,
         'thumb': '../img/c_portrait_4.png',
         'pic': '../img/drum1.gif',
-        'name': 'Beat 1',
+        'name': '1',
         'audio': 'audio/drum1.wav',
         'added': false,
         'isPlaying': false,
@@ -21,7 +21,7 @@ module.service('soundservice', function () {
         id: 1,
         'thumb': '../img/c_portrait_1.png',
         'pic': '../img/drum2.gif',
-        'name': 'Beat 2',
+        'name': '2',
         'audio': 'audio/drum2.wav',
         'added': false,
         'isPlaying': false,
@@ -32,7 +32,7 @@ module.service('soundservice', function () {
         id: 2,
         'thumb': '../img/c_portrait_2.png',
         'pic': '../img/drum3.gif',
-        'name': 'Beat 3',
+        'name': '3',
         'audio': 'audio/drum3.wav',
         'added': false,
         'isPlaying': false,
@@ -43,7 +43,7 @@ module.service('soundservice', function () {
         id: 3,
         'thumb': '../img/c_portrait_3.png',
         'pic': '../img/drum4.gif',
-        'name': 'Beat 4',
+        'name': '4',
         'audio': 'audio/drum4.wav',
         'added': false,
         'isPlaying': false,
@@ -54,7 +54,7 @@ module.service('soundservice', function () {
         id: 4,
         'thumb': '../img/c_portrait_5.png',
         'pic': '../img/bass1.gif',
-        'name': 'Bass 1',
+        'name': '1',
         'audio': 'audio/bass1.wav',
         'added': false,
         'isPlaying': false,
@@ -65,7 +65,7 @@ module.service('soundservice', function () {
         id: 5,
         'thumb': '../img/c_portrait_6.png',
         'pic': '../img/bass2.gif',
-        'name': 'Bass 2',
+        'name': '2',
         'audio': 'audio/bass2.wav',
         'added': false,
         'isPlaying': false,
@@ -76,7 +76,7 @@ module.service('soundservice', function () {
         id: 6,
         'thumb': '../img/c_portrait_7.png',
         'pic': '../img/bass3.gif',
-        'name': 'Bass 3',
+        'name': '3',
         'audio': 'audio/bass3.wav',
         'added': false,
         'isPlaying': false,
@@ -87,7 +87,7 @@ module.service('soundservice', function () {
         id: 7,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/bass4.gif',
-        'name': 'Bass 4',
+        'name': '4',
         'audio': 'audio/bass4.wav',
         'added': false,
         'isPlaying': false,
@@ -98,7 +98,7 @@ module.service('soundservice', function () {
         id: 8,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/melody1.gif',
-        'name': 'Melody 1',
+        'name': '1',
         'audio': 'audio/melody1.wav',
         'added': false,
         'isPlaying': false,
@@ -109,7 +109,7 @@ module.service('soundservice', function () {
         id: 9,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/melody2.gif',
-        'name': 'Melody 2',
+        'name': '2',
         'audio': 'audio/melody2.wav',
         'added': false,
         'isPlaying': false,
@@ -120,7 +120,7 @@ module.service('soundservice', function () {
         id: 10,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/melody3.gif',
-        'name': 'Melody 3',
+        'name': '3',
         'audio': 'audio/melody3.wav',
         'added': false,
         'isPlaying': false,
@@ -131,7 +131,7 @@ module.service('soundservice', function () {
         id: 11,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/melody4.gif',
-        'name': 'Melody 4',
+        'name': '4',
         'audio': 'audio/melody4.wav',
         'added': false,
         'isPlaying': false,
@@ -142,7 +142,7 @@ module.service('soundservice', function () {
         id: 12,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/voice1.gif',
-        'name': 'Voice 1',
+        'name': '1',
         'audio': 'audio/voice1.wav',
         'added': false,
         'isPlaying': false,
@@ -153,7 +153,7 @@ module.service('soundservice', function () {
         id: 13,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/voice2.gif',
-        'name': 'Voice 2',
+        'name': '2',
         'audio': 'audio/voice2.wav',
         'added': false,
         'isPlaying': false,
@@ -164,7 +164,7 @@ module.service('soundservice', function () {
         id: 14,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/voice3.gif',
-        'name': 'Voice 3',
+        'name': '3',
         'audio': 'audio/voice2.wav',
         'added': false,
         'isPlaying': false,
@@ -175,15 +175,13 @@ module.service('soundservice', function () {
         id: 15,
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/voice4.gif',
-        'name': 'Voice 4',
+        'name': '4',
         'audio': 'audio/voice4.wav',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
     }
 
-  
-    
     ];
 
 
@@ -473,16 +471,16 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
         var delay;
 
-        // if ($scope.nowPlaying.length == 0) {
-        //     delay = 0;
-        // } else {
-        //     delay = $scope.nowPlaying[0].duration - $scope.nowPlaying[0].currentTime;
-        //     // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].duration);
-        //     console.log('delay: ' + delay);
-        // }
+        if ($scope.nowPlaying.length == 0) {
+            delay = 0;
+        } else {
+            delay = $scope.nowPlaying[0].duration - $scope.nowPlaying[0].currentTime;
+            // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].duration);
+            console.log('delay: ' + delay);
+        }
 
 
-        // $scope.getDelay();
+        $scope.getDelay();
 
         if (selected.isPlaying == false) {
             
@@ -519,51 +517,34 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
         switch (numSounds) {
             case 1:
-                console.log("just 1 sound");
+                console.log("1 sound");
                 $(".tile").css('height', $scope.windowHeight + 'px');
                 $(".tile").css('width', 100 + '%');
                 $(".tile img").css('height', 200 + 'px');
                 $(".tile").css('line-height', (540) + 'px');
                 break;
             case 2:
-                console.log("now 2 sounds");
+                console.log("2 sounds");
                 $(".tile").css('height', $scope.windowHeight/2 + 'px');
                 $(".tile").css('width', 100 + '%');
                 $(".tile img").css('height', 180 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/2) + 'px');
                 break;
             case 3:
-                console.log("now 3 sounds");
-                $(".tile").css('height', $scope.windowHeight/2 + 'px');
-                $(".tile").css('width', 50 + '%');
-                $(".tile img").css('height', 140 + 'px');
-                break;
             case 4:
-                console.log("now 4 sounds");
+                console.log("4 sounds");
                 $(".tile").css('height', $scope.windowHeight/2 + 'px');
                 $(".tile").css('width', 50 + '%');
                 $(".tile img").css('height', 140 + 'px');
                 break;
             case 5:
-                console.log("now 5 sounds");
-                $(".tile").css('height', $scope.windowHeight/3 + 'px');
-                $(".tile img").css('height', 120 + 'px');
-                $(".tile").css('line-height', ($scope.windowHeight/3) + 'px');
-                break;
             case 6:
-                console.log("now 6 sounds");
                 $(".tile").css('height', $scope.windowHeight/3 + 'px');
                 $(".tile img").css('height', 120 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/3) + 'px');
                 break;
             case 7:
-                console.log("now 7 sounds");
-                $(".tile").css('height', $scope.windowHeight/4 + 'px');
-                $(".tile img").css('height', 120 + 'px');
-                $(".tile").css('line-height', ($scope.windowHeight/4) + 'px');
-                break;
             case 8:
-                console.log("now 8 sounds");
                 $(".tile").css('height', $scope.windowHeight/4 + 'px');
                 $(".tile img").css('height', 120 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/4) + 'px');

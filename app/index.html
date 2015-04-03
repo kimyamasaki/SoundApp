@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
 </head>
 
 <body onLoad='startRealtime()'>
@@ -71,13 +71,6 @@
       </div>
 
       <div id="submenu" ng-show="soundmenuHideShow">
-          <!-- <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id)">          
-              <img ng-src='img/{{ sound.thumb }}' ng-click="sound.added = !sound.added" ng-class="{added: sound.added}" />
-          </li> -->
-
-          <!-- <li ng-repeat="sound in sounds | filter:filters" ng-click="addSound(sound.id)">          
-              <img ng-src='img/{{ sound.thumb }}' ng-click="sound.added = !sound.added" ng-class="{added: sound.added}" />
-          </li> -->
 
           <ul>
             <li ng-repeat="sound in sounds | filter:filters" ng-click="sound.added = !sound.added; addSound(sound.id)" ng-class="{added: sound.added}">          
