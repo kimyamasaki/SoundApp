@@ -245,29 +245,21 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
     $scope.types = [{
         id: 0,
-        'default': '../img/beat_icon1.png',
-        'pressed': '../img/beat_icon2.png',
         'category': 'beat'
     },
 
     {
         id: 1,
-        'default': 'bass_icon1.png',
-        'pressed': '../img/bass_icon2.png',
         'category': 'bass'
     },
 
     {
         id: 2,
-        'default': 'melody_icon1.png',
-        'pressed': '../img/melody_icon2.png',
         'category': 'melody'
     },
 
     {
         id: 3,
-        'default': 'vocal_icon1.png',
-        'pressed': '../img/vocal_icon2.png',
         'category': 'voice'
     }
     ];
@@ -400,8 +392,10 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         numSounds--;
 
         $scope.sounds[id].added = false;
-        $scope.sounds[id].isPlaying = true;
-        $scope.togglePlay(id);
+        $scope.sounds[id].isPlaying = false;
+
+        $scope.clips[id].pause();
+        $scope.clips[id].currentTime = 0;
 
         $scope.getTileSize();
         console.log("number of sounds: " + numSounds);
@@ -411,10 +405,6 @@ module.controller('soundController', function ($scope, $window, soundservice) {
                $scope.nowPlaying.splice(i, 1);
             }
         }
-
-        console.log($scope.nowPlaying);
-
-        // $scope.nowPlaying.push($scope.clips[id]);
 
         //This deletes the right ids out of the text area
         var savedArray = document.getElementById("editor1").value;
@@ -449,11 +439,9 @@ module.controller('soundController', function ($scope, $window, soundservice) {
     $scope.togglePlay = function(id){
         console.log(numSounds);
 
-        
         var selected = $scope.sounds[id];
         var selectedClip = $scope.clips[id];
         selectedClip.loop = true;
-
 
         var delay;
 

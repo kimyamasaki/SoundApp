@@ -56,14 +56,17 @@
 
 
     <div id="soundboard">
-      <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay(sound.id);">
+      <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay($index);">
 
           <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type == 'bass', 'blue': sound.type == 'voice', 'yellow': sound.type == 'melody'}">
             <div class="innerElement">
-              <img ng-src='./img/{{ sound.pic }}' />
-              <a href="javascript:void(0)" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</a>
+              <img ng-src='./img/{{ sound.pic }}' />          
             </div>
+
+            <button class="deleteButton" ng-click="deleteSound($index); sound.isPlaying == true">delete</button>
           </div>
+          
+          <!-- <button class="deleteButton" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</button> -->
 
       </div>
     </div>
