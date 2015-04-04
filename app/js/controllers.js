@@ -313,6 +313,47 @@ module.controller('soundController', function ($scope, $window, soundservice) {
          //console.log('Loading...')
     }
 
+     $scope.clearAll = function(){
+        var savedArray = document.getElementById("editor1").value;
+        
+        loadList = savedArray.split(" ").map(Number);
+
+        console.log("LOAD LIST ID");
+        console.log(loadList);
+       
+        
+        
+
+        for (var i = 0; i < loadList.length; i++) {
+            //console.log("THIS ITEM IS GETTING DELETED");
+            //console.log(loadList[i]);
+            
+            $scope.deleteSound(loadList[i]);
+            
+         }
+
+        
+        loadList = [];
+        //console.log(loadList);
+        numSounds = 0;
+        // console.log("LOAD LIST after");
+        // console.log(loadList);
+        //$scope.newSoundParty(id);
+        
+        //numSounds = 0;
+        
+        // loadList = loadList.join(" ");
+        // var el = document.getElementById("editor1");
+        // el.value += loadList; 
+        // string.setText(el.value);
+
+        
+        // var el = document.getElementById("editor1");
+        // el.value += joinedArray;
+        // string.setText(el.value);
+
+    }
+
     $scope.save = function() {
         var savedArray = document.getElementById("editor1").value;
         
