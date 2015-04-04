@@ -16,6 +16,8 @@
 <!-- <body> -->
 
   <div ng-app="soundApp" ng-controller="soundController">
+  <button id="authorizeButton" enabled>You must authorize</button>
+
     <!-- <div ng-show="splashHideShow"> -->
     <div id="topMenu">
       <button ng-click="clearAll(); newSoundParty();">Clear</button>
@@ -56,6 +58,7 @@
 
 
     <div id="soundboard">
+
       <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay($index);">
 
           <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type == 'bass', 'blue': sound.type == 'voice', 'yellow': sound.type == 'melody'}">
@@ -76,7 +79,7 @@
     
 
     <div class="textareas">
-      <button id="authorizeButton" disabled>You must authorize</button>
+      <button id="authorizeButton" enabled>You must authorize</button>
 
       <p>These text areas are on the same page. You can also
       <a href="#" onclick="window.open(window.location.href);return false;">
