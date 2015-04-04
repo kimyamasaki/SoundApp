@@ -13,7 +13,7 @@ var sounds = [{
         'pic': '../img/drum1.gif',
         'name': '1',
         'audio': 'audio/drum1.wav',
-        'png' : '../img/drum1.png',
+        'png' : '../img/drum.png',
         'hide': 'drum1',
         'added': false,
         'isPlaying': false,
@@ -26,7 +26,7 @@ var sounds = [{
         'pic': '../img/drum2.gif',
         'name': '2',
         'audio': 'audio/drum2.wav',
-        'png' : '../img/drum1.png',
+        'png' : '../img/drum.png',
         'hide': 'drum2',
         'added': false,
         'isPlaying': false,
@@ -39,7 +39,7 @@ var sounds = [{
         'pic': '../img/drum3.gif',
         'name': '3',
         'audio': 'audio/drum3.wav',
-        'png' : '../img/drum1.png',
+        'png' : '../img/drum.png',
         'hide': 'drum3',
         'added': false,
         'isPlaying': false,
@@ -52,7 +52,7 @@ var sounds = [{
         'pic': '../img/drum4.gif',
         'name': '4',
         'audio': 'audio/drum4.wav',
-        'png' : '../img/drum1.png',
+        'png' : '../img/drum.png',
         'hide': 'drum4',
         'added': false,
         'isPlaying': false,
@@ -65,6 +65,7 @@ var sounds = [{
         'pic': '../img/bass1.gif',
         'name': '1',
         'audio': 'audio/bass1.wav',
+        'png' : '../img/bass.png',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -76,6 +77,7 @@ var sounds = [{
         'pic': '../img/bass2.gif',
         'name': '2',
         'audio': 'audio/bass2.wav',
+        'png' : '../img/bass.png',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -87,6 +89,7 @@ var sounds = [{
         'pic': '../img/bass3.gif',
         'name': '3',
         'audio': 'audio/bass3.wav',
+        'png' : '../img/bass.png',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -98,6 +101,7 @@ var sounds = [{
         'pic': '../img/bass4.gif',
         'name': '4',
         'audio': 'audio/bass4.wav',
+        'png' : '../img/bass.png',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -109,6 +113,7 @@ var sounds = [{
         'pic': '../img/melody1.gif',
         'name': '1',
         'audio': 'audio/melody1.wav',
+        'png' : '../img/melody.png',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -120,6 +125,7 @@ var sounds = [{
         'pic': '../img/melody2.gif',
         'name': '2',
         'audio': 'audio/melody2.wav',
+        'png' : '../img/melody.png',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -131,6 +137,7 @@ var sounds = [{
         'pic': '../img/melody3.gif',
         'name': '3',
         'audio': 'audio/melody3.wav',
+        'png' : '../img/melody.png',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -142,6 +149,7 @@ var sounds = [{
         'pic': '../img/melody4.gif',
         'name': '4',
         'audio': 'audio/melody4.wav',
+        'png' : '../img/melody.png',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -153,6 +161,7 @@ var sounds = [{
         'pic': '../img/voice1.gif',
         'name': '1',
         'audio': 'audio/voice1.wav',
+        'png' : '../img/voice.png',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
@@ -164,6 +173,7 @@ var sounds = [{
         'pic': '../img/voice2.gif',
         'name': '2',
         'audio': 'audio/voice2.wav',
+        'png' : '../img/voice.png',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
@@ -175,6 +185,7 @@ var sounds = [{
         'pic': '../img/voice3.gif',
         'name': '3',
         'audio': 'audio/voice2.wav',
+        'png' : '../img/voice.png',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
@@ -186,6 +197,7 @@ var sounds = [{
         'pic': '../img/voice4.gif',
         'name': '4',
         'audio': 'audio/voice4.wav',
+        'png' : '../img/voice.png',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
