@@ -6,7 +6,8 @@ module.service('soundservice', function () {
 
     //sounds array to hold list of all sounds
     //----------------------------BEAT------------------------------------
-    var sounds = [{
+    
+var sounds = [{
         id: 0,
         'thumb': '../img/c_portrait_4.png',
         'pic': '../img/drum1.gif',
@@ -191,7 +192,6 @@ module.service('soundservice', function () {
     }
 
     ];
-
 
     
 
@@ -450,6 +450,13 @@ module.controller('soundController', function ($scope, $window, soundservice) {
     };
 
 
+    var gifs = [
+        '../img/drum1.gif', '../img/drum2.gif', '../img/drum3.gif', '../img/drum4.gif',
+        '../img/bass1.gif', '../img/bass2.gif', '../img/bass3.gif', '../img/bass4.gif',
+        '../img/melody1.gif', '../img/melody2.gif', '../img/melody3.gif', '../img/melody4.gif',
+        '../img/voice1.gif', '../img/voice2.gif', '../img/voice3.gif', '../img/voice4.gif'
+    ];
+
     $scope.togglePlay = function(id){
         console.log(numSounds);
         var compare = $scope.sounds[id].hide;
@@ -457,12 +464,7 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         console.log(compare);
         var selectedClip = $scope.clips[id];
         selectedClip.loop = true;
-
         var delay;
-
-        //var freezeGif = $scope.sounds[id].pic;
-        //console.log($scope.sounds[id].png);
-        //setInterval(function() { freezeGif.src = freezeGif.src; }, 1);
 
 
         if ($scope.nowPlaying.length == 0) {
@@ -476,48 +478,22 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
         $scope.getDelay();
 
-        if (selected.isPlaying == false) {
+        
+
+        if (!selected.isPlaying) {
             
-            if(compare == 'drum1'){
-                $scope.drum1 = false;
-            }
-            if(compare == 'drum2'){
-                $scope.drum2 = false;
-            }
-            if(compare == 'drum3'){
-                $scope.drum3 = false;
-            }
-            if(compare == 'drum4'){
-                $scope.drum4 = false;
-            }
-            //$scope.drum3 = false;
-            //$scope.drum4 = false;
-            
-            // window.setTimeout(selectedClip.play(), 2000);
+            $scope.sounds[id].pic = gifs[id];
+
             console.log(delay);
             selectedClip.play();
-            // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].totalTime);
 
-        } else if (selected.isPlaying == true) {     
+        } else if (selected.isPlaying) {  
+
+            $scope.sounds[id].pic = $scope.sounds[id].png;
+
             selectedClip.pause();
             selectedClip.currentTime = 0;
 
-             if(compare == 'drum1'){
-                $scope.drum1 = true;
-            }
-            if(compare == 'drum2'){
-                $scope.drum2 = true;
-            }
-            if(compare == 'drum3'){
-                $scope.drum3 = true;
-            }
-            if(compare == 'drum4'){
-                $scope.drum4 = true;
-            }
-            //$scope.drum3 = true;
-            //$scope.drum4 = true;
-
-            //setInterval(function() { freezeGif.src = freezeGif.src; }, 1);
         }
     };
 
