@@ -12,6 +12,8 @@ module.service('soundservice', function () {
         'pic': '../img/drum1.gif',
         'name': '1',
         'audio': 'audio/drum1.wav',
+        'png' : '../img/drum1.png',
+        'hide': 'drum1',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -23,6 +25,8 @@ module.service('soundservice', function () {
         'pic': '../img/drum2.gif',
         'name': '2',
         'audio': 'audio/drum2.wav',
+        'png' : '../img/drum1.png',
+        'hide': 'drum2',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -34,6 +38,8 @@ module.service('soundservice', function () {
         'pic': '../img/drum3.gif',
         'name': '3',
         'audio': 'audio/drum3.wav',
+        'png' : '../img/drum1.png',
+        'hide': 'drum3',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -45,6 +51,8 @@ module.service('soundservice', function () {
         'pic': '../img/drum4.gif',
         'name': '4',
         'audio': 'audio/drum4.wav',
+        'png' : '../img/drum1.png',
+        'hide': 'drum4',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -317,17 +325,12 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         var savedArray = document.getElementById("editor1").value;
         
         loadList = savedArray.split(" ").map(Number);
-
-        console.log("LOAD LIST ID");
-        console.log(loadList);
+        //console.log("LOAD LIST ID");
+        //console.log(loadList);
        
-        
-        
-
         for (var i = 0; i < loadList.length; i++) {
             //console.log("THIS ITEM IS GETTING DELETED");
-            //console.log(loadList[i]);
-            
+            //console.log(loadList[i]);   
             $scope.deleteSound(loadList[i]);
             
          }
@@ -392,7 +395,6 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         el.value += id;
         string.setText(el.value + " ");
 
-
         // var greens = ['#ff0000', '#00ff00', '#0000ff'];
         // var random_color = greens[Math.floor(Math.random() * greens.length)];
         // $(".green").css('background', random_color);
@@ -450,12 +452,18 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
     $scope.togglePlay = function(id){
         console.log(numSounds);
-
+        var compare = $scope.sounds[id].hide;
         var selected = $scope.sounds[id];
+        console.log(compare);
         var selectedClip = $scope.clips[id];
         selectedClip.loop = true;
 
         var delay;
+
+        //var freezeGif = $scope.sounds[id].pic;
+        //console.log($scope.sounds[id].png);
+        //setInterval(function() { freezeGif.src = freezeGif.src; }, 1);
+
 
         if ($scope.nowPlaying.length == 0) {
             delay = 0;
@@ -470,15 +478,46 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
         if (selected.isPlaying == false) {
             
-            setTimeout(function() { selectedClip.play(); }, delay);
+            if(compare == 'drum1'){
+                $scope.drum1 = false;
+            }
+            if(compare == 'drum2'){
+                $scope.drum2 = false;
+            }
+            if(compare == 'drum3'){
+                $scope.drum3 = false;
+            }
+            if(compare == 'drum4'){
+                $scope.drum4 = false;
+            }
+            //$scope.drum3 = false;
+            //$scope.drum4 = false;
+            
             // window.setTimeout(selectedClip.play(), 2000);
             console.log(delay);
-            // selectedClip.play();
+            selectedClip.play();
             // console.log('song playing! starting at ' + $scope.nowPlaying[0].currentTime + '/' + $scope.nowPlaying[0].totalTime);
 
         } else if (selected.isPlaying == true) {     
             selectedClip.pause();
             selectedClip.currentTime = 0;
+
+             if(compare == 'drum1'){
+                $scope.drum1 = true;
+            }
+            if(compare == 'drum2'){
+                $scope.drum2 = true;
+            }
+            if(compare == 'drum3'){
+                $scope.drum3 = true;
+            }
+            if(compare == 'drum4'){
+                $scope.drum4 = true;
+            }
+            //$scope.drum3 = true;
+            //$scope.drum4 = true;
+
+            //setInterval(function() { freezeGif.src = freezeGif.src; }, 1);
         }
     };
 

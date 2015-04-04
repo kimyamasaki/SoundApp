@@ -7,16 +7,16 @@ var soundApp = angular.module('soundApp', [
 
 ]);
 
-window.onload = function() {
-	var tileElements = document.getElementsByClassName("tile");
+// window.onload = function() {
+// 	var tileElements = document.getElementsByClassName("tile");
 
 
-	[].slice.call(tileElements).forEach(function(tileElements) {
-	    var tiles = new Hammer(tileElements);
+// 	[].slice.call(tileElements).forEach(function(tileElements) {
+// 	    var tiles = new Hammer(tileElements);
 
 
-	    tiles.on('press', function(event) {   
-		    $('.deleteButton').css('display', 'block');
-		});
-	});
-};
+// 	    tiles.on('press', function(event) {   
+// 		    $('.deleteButton').css('display', 'block');
+// 		});
+// 	});
+// };

@@ -62,7 +62,13 @@
       <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay($index);">
 
           <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type == 'bass', 'blue': sound.type == 'voice', 'yellow': sound.type == 'melody'}">
+          
+
             <div class="innerElement">
+            <div ng-show="{{sound.hide}}">
+                <img ng-src='./img/{{ sound.png }}' /> 
+            </div>
+
               <img ng-src='./img/{{ sound.pic }}' />          
             </div>          
 
