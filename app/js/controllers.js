@@ -77,7 +77,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_7.png',
         'pic': '../img/bass3.gif',
         'name': '3',
-        'audio': 'zaudio/bass3.wav',
+        'audio': 'audio/bass3.wav',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
