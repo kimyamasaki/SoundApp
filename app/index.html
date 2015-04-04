@@ -64,7 +64,7 @@
           <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type == 'bass', 'blue': sound.type == 'voice', 'yellow': sound.type == 'melody'}">
           
             <div class="innerElement">
-              <img id={{'IMG'+$index}}) ng-src='./img/{{ sound.pic }}' />          
+              <img ng-src='./img/{{ sound.pic }}' />          
             </div>          
 
             <a href="javascript:void(0)" class="deleteButton" ng-click="deleteSound($index); sound.isPlaying == true"></a>
