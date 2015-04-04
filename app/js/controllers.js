@@ -242,33 +242,14 @@ module.service('soundservice', function () {
 
 module.controller('soundController', function ($scope, $window, soundservice) {
 
-
-    $scope.types = [{
-        id: 0,
-        'category': 'beat'
-    },
-
-    {
-        id: 1,
-        'category': 'bass'
-    },
-
-    {
-        id: 2,
-        'category': 'melody'
-    },
-
-    {
-        id: 3,
-        'category': 'voice'
-    }
+    $scope.types = [
+        {'category': 'beat'},
+        {'category': 'bass'},
+        {'category': 'melody'},
+        {'category': 'voice'}
     ];
 
-
-
     $scope.windowHeight = $window.innerHeight - 70;
-    // console.log($scope.windowHeight);
-
     $scope.sounds = soundservice.list(); 
     $scope.clips = [];
     $scope.nowPlaying = [];
@@ -276,16 +257,9 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
     $scope.splashHideShow = true;
     $scope.soundPartyHideShow = false;
-    // $scope.categoriesHideShow = true;
-    // $scope.soundmenuHideShow = false;
 
     var loadList = [];
-
-    //console.log(loadList);
-
     var numSounds = 0;
-
-
     var delay = false;
 
 
@@ -354,20 +328,15 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
     $scope.addSound = function(id) {
         
-
         // check if the sound is already on the soundboard
         if ($.inArray($scope.clips[id], $scope.nowPlaying) != -1) {
-
             $scope.deleteSound(id);
-
         } else {
-
             numSounds++;
             $scope.nowPlaying.push($scope.clips[id]);
             $scope.sounds[id].added = true;
             $scope.sounds[id].isPlaying = false;
             $scope.togglePlay(id);
-
             $scope.getTileSize();
 
             console.log($scope.nowPlaying);
@@ -396,6 +365,8 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
         $scope.clips[id].pause();
         $scope.clips[id].currentTime = 0;
+
+        $(".tile").css('width', 80 + '%');
 
         $scope.getTileSize();
         console.log("number of sounds: " + numSounds);

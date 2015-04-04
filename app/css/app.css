@@ -183,10 +183,15 @@ input#voice[type="checkbox"]:checked + label {
 
 .deleteButton {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
   width: 100px;
   height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  display: none;
 }
 
 .green {
