@@ -11,7 +11,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_4.png',
         'pic': '../img/drum1.gif',
         'name': '1',
-        'audio': 'audio/drum1.wav',
+        'audio': '../audio/drum1.wav',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -22,7 +22,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_1.png',
         'pic': '../img/drum2.gif',
         'name': '2',
-        'audio': 'audio/drum2.wav',
+        'audio': '../audio/drum2.wav',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -33,7 +33,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_2.png',
         'pic': '../img/drum3.gif',
         'name': '3',
-        'audio': 'audio/drum3.wav',
+        'audio': '../audio/drum3.wav',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -44,7 +44,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_3.png',
         'pic': '../img/drum4.gif',
         'name': '4',
-        'audio': 'audio/drum4.wav',
+        'audio': '../audio/drum4.wav',
         'added': false,
         'isPlaying': false,
         'type': 'beat'
@@ -55,7 +55,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_5.png',
         'pic': '../img/bass1.gif',
         'name': '1',
-        'audio': 'audio/bass1.wav',
+        'audio': '../audio/bass1.wav',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -66,7 +66,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_6.png',
         'pic': '../img/bass2.gif',
         'name': '2',
-        'audio': 'audio/bass2.wav',
+        'audio': '../audio/bass2.wav',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -77,7 +77,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_7.png',
         'pic': '../img/bass3.gif',
         'name': '3',
-        'audio': 'audio/bass3.wav',
+        'audio': '../audio/bass3.wav',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -88,7 +88,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/bass4.gif',
         'name': '4',
-        'audio': 'audio/bass4.wav',
+        'audio': '../audio/bass4.wav',
         'added': false,
         'isPlaying': false,
         'type': 'bass'
@@ -99,7 +99,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/melody1.gif',
         'name': '1',
-        'audio': 'audio/melody1.wav',
+        'audio': '..audio/melody1.wav',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -110,7 +110,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/melody2.gif',
         'name': '2',
-        'audio': 'audio/melody2.wav',
+        'audio': '../audio/melody2.wav',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -121,7 +121,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/melody3.gif',
         'name': '3',
-        'audio': 'audio/melody3.wav',
+        'audio': '../audio/melody3.wav',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -132,7 +132,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/melody4.gif',
         'name': '4',
-        'audio': 'audio/melody4.wav',
+        'audio': '../audio/melody4.wav',
         'added': false,
         'isPlaying': false,
         'type': 'melody'
@@ -143,7 +143,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/voice1.gif',
         'name': '1',
-        'audio': 'audio/voice1.wav',
+        'audio': '../audio/voice1.wav',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
@@ -154,7 +154,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/voice2.gif',
         'name': '2',
-        'audio': 'audio/voice2.wav',
+        'audio': '../audio/voice2.wav',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
@@ -165,7 +165,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/voice3.gif',
         'name': '3',
-        'audio': 'audio/voice2.wav',
+        'audio': '../audio/voice2.wav',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
@@ -176,7 +176,7 @@ module.service('soundservice', function () {
         'thumb': '../img/c_portrait_8.png',
         'pic': '../img/voice4.gif',
         'name': '4',
-        'audio': 'audio/voice4.wav',
+        'audio': '../audio/voice4.wav',
         'added': false,
         'isPlaying': false,
         'type': 'voice'
