@@ -7,6 +7,40 @@ var soundApp = angular.module('soundApp', [
 
 ]);
 
+
+
+window.onload = function() {
+
+    startRealtime();
+
+    var soundboard = new Hammer(document.getElementById("soundboard"));
+    var backButton = new Hammer(document.getElementById("backButton"));
+
+    soundboard.on('press', function(event) {   
+        $('.deleteButton').css('display', 'block');
+        $('.tile .innerElement').css('opacity', '0.5');
+        $('.tile').css({'border': '5px solid #4b526d', 'border-radius': 10+'px'});
+        $('#topMenu, #submenu').fadeOut();
+        $('#beat, #bass, #melody, #voice').prop('checked', false);
+        $('#soundCategories').css({'opacity': '0.5', 'pointer-events': 'none'});
+        $('#backButton').fadeIn();
+        $('#gradient').fadeIn();
+    });
+
+    backButton.on("tap", function(event) {
+        $('.deleteButton').css('display', 'none');
+        $('.tile .innerElement').css('opacity', '1');
+        $('.tile').css({'border': 'none', 'border-radius': 0});
+        $('#topMenu').fadeIn();
+        $('#soundCategories').css({'opacity': '1', 'pointer-events': 'auto'});
+        $('#backButton').fadeOut();
+        $('#gradient').fadeOut();
+    });
+
+};
+
+
+
 // //--------------
 // // Audio Object
 // //--------------
@@ -167,17 +201,3 @@ var soundApp = angular.module('soundApp', [
 // }
 
 
-
-// window.onload = function() {
-// 	var tileElements = document.getElementsByClassName("tile");
-
-
-// 	[].slice.call(tileElements).forEach(function(tileElements) {
-// 	    var tiles = new Hammer(tileElements);
-
-
-// 	    tiles.on('press', function(event) {   
-// 		    $('.deleteButton').css('display', 'block');
-// 		});
-// 	});
-// };

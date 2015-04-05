@@ -51,7 +51,7 @@ html, body {
   list-style-type: none;
   font-size: 20px;
   font-weight: 700;
-  padding: 2px 8.5% 6px 8.5%;
+  padding: 1px 8.6% 6px 8.6%;
   margin-left: 4px;
   margin-right: 4px;
   text-align: center;
@@ -82,37 +82,35 @@ input[type="checkbox"] + label {
     display:inline-block;
 }
 
-input#beat[type="checkbox"] + label {
+input#beat + label {
     background: url('../img/beat_icon1.png');
 }
 
-input#beat[type="checkbox"]:checked + label {
+input#beat:checked + label {
     background: url('../img/beat_icon2.png');
 }
 
-input#bass[type="checkbox"] + label {
+input#bass + label {
     background: url('../img/bass_icon1.png');
 }
 
-input#bass[type="checkbox"]:checked + label {
+input#bass:checked + label {
     background: url('../img/bass_icon2.png');
 }
 
-
-input#melody[type="checkbox"] + label {
+input#melody + label {
     background: url('../img/melody_icon1.png');
 }
 
-input#melody[type="checkbox"]:checked + label {
+input#melody:checked + label {
     background: url('../img/melody_icon2.png');
 }
 
-
-input#voice[type="checkbox"] + label {
+input#voice + label {
     background: url('../img/vocal_icon1.png');
 }
 
-input#voice[type="checkbox"]:checked + label {
+input#voice:checked + label {
     background: url('../img/vocal_icon2.png');
 }
 
@@ -122,25 +120,28 @@ input#voice[type="checkbox"]:checked + label {
 
 #topMenu {
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 4%;
   height: 100px;
   z-index: 20;
 }
 
-#topMenu button {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  background-color: #7e7ce8;
-  margin: 5px;
+
+
+#saveButton {
+  height: 58px;
+  width: 55px;
+  background: url('../img/saveButton.png');
   border: none;
-  font-size: 16px;
-  color: white;
+
+  -webkit-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #categories {
-  margin: -6px 2% 0 2%;
+  margin: -8px 3% 0 3%;
 }
 
 .paused {
@@ -181,16 +182,46 @@ input#voice[type="checkbox"]:checked + label {
   display: inline-block;
 }
 
+.form-group {
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  font-size: 20px;
+}
+
 .deleteButton {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
-  width: 100px;
-  height: 100px;
-  background-color: white;
+  margin-top: -36px;
+  margin-left: -35px;
+  width: 70px;
+  height: 73px;
+  background: url("../img/delete_icon.png");
   border-radius: 50%;
+  display: none;
+  z-index: 30;
+}
+
+#backButton {
+  position: fixed;
+  top: 3px;
+  left: 4px;
+  background: url('../img/backButton.png');
+  width: 65px;
+  height: 65px;
+  z-index: 30;
+  display: none;
+}
+
+#gradient {
+  position: fixed;
+  top: 0;
+  background: url('../img/gradient.png');
+  background-repeat: repeat-x;
+  height: 80px;
+  width: 100%;
+  z-index: 30;
   display: none;
 }
 

@@ -12,7 +12,7 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
 </head>
 
-<body onLoad='startRealtime()'>
+<body>
 <!-- <body> -->
 
   <div ng-app="soundApp" ng-controller="soundController">
@@ -22,32 +22,33 @@
     <div id="topMenu">
       <button ng-click="clearAll(); newSoundParty();">Clear</button>
       <button ng-click="loadSoundParty(loadList)">Load</button>
-      <!-- <button ng-click="save()">Save</button> -->
+      <button id="saveButton" ng-click="save()"></button>
     </div>
+
+    
+    <div id="gradient"></div>
+    <div id="backButton"></div>
 
     <!-- <div ng-show="soundPartyHideShow"> -->
       
     <div id="menu">
 
-      <!-- <button id="addButton" ng-click="menuToggle(); filters.type = ''">+</button> -->
-
-      <!-- <div id="soundCategories" ng-click="viewSoundMenu()"> -->
       <div id="soundCategories">
 
         <label id="categories" ng-repeat="type in types">
-            <input type="checkbox" name="category" id="{{type.category}}" ng-click="checky(); filters.type = type.category" />
+            <input type="checkbox" name="category" id="{{type.category}}" ng-click="checkMenuToggle(); filters.type = type.category" />
             <label for="{{type.category}}"></label>
             <!-- <img ng-src= './img/{{ type.default }}' /> -->
         </label>
 
-        <a href="" ng-click="save()">Save</a>
+        <!-- <a href="" ng-click="save()">Save</a> -->
 
       </div>
 
       <div id="submenu" ng-show="soundmenuHideShow">
 
           <ul>
-            <li ng-repeat="sound in sounds | filter:filters" ng-click="sound.added = !sound.added; addSound(sound.id)" ng-class="{added: sound.added}">          
+            <li ng-repeat="sound in sounds | filter:filters" ng-click="sound.added = !sound.added; addSound(sound.id)" ng-class="{added: (sound.added && checkNumSounds())}">          
                 {{ sound.name }}
             </li>
           </ul>
@@ -61,16 +62,26 @@
 
       <div ng-repeat="sound in sounds track by $index" ng-click="sound.isPlaying = !sound.isPlaying; togglePlay($index);">
 
-          <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type == 'bass', 'blue': sound.type == 'voice', 'yellow': sound.type == 'melody'}">
-          
+        <div class="tile" ng-show="sound.added == true" ng-class="{'paused': sound.isPlaying, 'green': sound.type == 'beat', 'red': sound.type == 'bass', 'blue': sound.type == 'voice', 'yellow': sound.type == 'melody'}">
+
+
+            <!-- <audio ng-src="{{ sound.audio }}" ontimeupdate="document.getElementById('tracktime').innerHTML = (this.currentTime) + ' / ' + (this.duration);">
+                <p>Your browser does not support the audio element</p>
+            </audio>
+            <span id="tracktime">0 / 0</span> -->
+            <!-- <button onclick="document.getElementById('track').play();">Play
+            </button> -->
+
+
+
             <div class="innerElement">
-              <img ng-src='./img/{{ sound.pic }}' />          
-            </div>          
+                <img ng-src='./img/{{ sound.pic }}' /> 
+            </div>
+
 
             <a href="javascript:void(0)" class="deleteButton" ng-click="deleteSound($index); sound.isPlaying == true"></a>
-          </div>
-          
-          <!-- <button class="deleteButton" ng-show="sound.added == true" ng-click="deleteSound($index)">delete</button> -->
+
+        </div>
 
       </div>
     </div>

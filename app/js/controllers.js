@@ -287,6 +287,12 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         $scope.clips[i] = (new Audio($scope.sounds[i].audio));
     }
 
+    // if (numSounds == 0) {
+    //     $('#saveButton').css({'opacity': '0.5', 'pointer-events': 'none'});
+    // } else {
+    //     $('#saveButton').css({'opacity': '1', 'pointer-events': 'auto'});
+    // }
+
     $scope.newSoundParty = function(id){
         $scope.save();
 
@@ -384,18 +390,25 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
     $scope.addSound = function(id) {
         
-        // check if the sound is already on the soundboard
-        if ($.inArray($scope.clips[id], $scope.nowPlaying) != -1) {
-            $scope.deleteSound(id);
+        if (numSounds > 7) {
+            alert("Oops, that's too many animals! Press and hold to delete a few.");
+            $scope.sounds[id].added = false;
+            return;
         } else {
-            numSounds++;
-            $scope.nowPlaying.push($scope.clips[id]);
-            $scope.sounds[id].added = true;
-            $scope.sounds[id].isPlaying = false;
-            $scope.togglePlay(id);
-            $scope.getTileSize();
 
-            console.log($scope.nowPlaying);
+            // check if the sound is already on the soundboard
+            if ($.inArray($scope.clips[id], $scope.nowPlaying) != -1) {
+                $scope.deleteSound(id);
+            } else {
+                numSounds++;
+                $scope.nowPlaying.push($scope.clips[id]);
+                $scope.sounds[id].added = true;
+                $scope.sounds[id].isPlaying = false;
+                $scope.togglePlay(id);
+                $scope.getTileSize();
+
+                console.log($scope.nowPlaying);
+            }
         }
         
 
@@ -507,6 +520,12 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             selectedClip.currentTime = 0;
 
         }
+
+        if (selected.ended) {
+            console.log("ended!");
+        } else {
+            console.log('not ended');
+        }
     };
 
     
@@ -529,12 +548,22 @@ module.controller('soundController', function ($scope, $window, soundservice) {
     $scope.getTileSize = function() {
 
         switch (numSounds) {
+            case 0:
+                $('.deleteButton').css('display', 'none');
+                $('.tile .innerElement').css('opacity', '1');
+                $('.tile').css({'border': 'none', 'border-radius': 0});
+                $('#topMenu').fadeIn('fast');
+                $('#soundCategories').css({'opacity': '1', 'pointer-events': 'auto'});
+                $('#backButton').fadeOut('fast');
+                $('#gradient').fadeOut('fast');
+                break;
             case 1:
                 console.log("1 sound");
                 $(".tile").css('height', $scope.windowHeight + 'px');
                 $(".tile").css('width', 100 + '%');
                 $(".tile img").css('height', 200 + 'px');
                 $(".tile").css('line-height', (540) + 'px');
+                // $('#saveButton').css({'opacity': '1', 'pointer-events': 'auto'});
                 break;
             case 2:
                 console.log("2 sounds");
@@ -553,12 +582,14 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             case 5:
             case 6:
                 $(".tile").css('height', $scope.windowHeight/3 + 'px');
+                $(".tile").css('width', 50 + '%');
                 $(".tile img").css('height', 120 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/3) + 'px');
                 break;
             case 7:
             case 8:
                 $(".tile").css('height', $scope.windowHeight/4 + 'px');
+                $(".tile").css('width', 50 + '%');
                 $(".tile img").css('height', 120 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/4) + 'px');
                 break;
@@ -575,7 +606,7 @@ module.controller('soundController', function ($scope, $window, soundservice) {
     // };
 
 
-    $scope.checky = function() {
+    $scope.checkMenuToggle = function() {
         
         // can't check more than one checkbox at a time
         $(":checkbox").on('change', function () {
@@ -595,6 +626,19 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             $scope.soundmenuHideShow = true;
         } else {
             $scope.soundmenuHideShow = false;
+        }
+
+        $('#submenu').fadeOut('fast');
+        $('#submenu').fadeIn('fast');
+    };
+
+
+    $scope.checkNumSounds = function() {
+        
+        if (numSounds <= 8) {
+            return true;
+        } else {
+            return false;
         }
     };
 
