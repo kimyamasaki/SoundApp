@@ -51,7 +51,7 @@ window.onload = function() {
     function shakeEventDidOccur () {
 
         //put your own code here etc.
-        alert('Shake! Clearing? Hopefully ;a;');
+        //alert('Shake! Clearing? Hopefully ;a;');
         angular.element(document.getElementById('shakeMe')).scope().clearAll();
         angular.element(document.getElementById('shakeMe')).scope().newSoundParty();
         angular.element(document.getElementById('shakeMe')).scope().$apply();
