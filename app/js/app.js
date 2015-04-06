@@ -54,7 +54,7 @@ window.onload = function() {
         alert('Shake! Clearing? Hopefully ;a;');
         angular.element(document.getElementById('shakeMe')).scope().clearAll();
         angular.element(document.getElementById('shakeMe')).scope().newSoundParty();
-
+        angular.element(document.getElementById('shakeMe')).scope().$apply();
 
     }
 
