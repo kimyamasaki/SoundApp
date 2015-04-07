@@ -84,7 +84,7 @@ html, body {
 }
 
 .resize{
-  margin-top: 80%;
+  margin-top: 60%;
   width: 10%;
   height: 10%;
   opacity: 0.5;
@@ -160,7 +160,7 @@ html, body {
   height: 110px;
   background-size: 258px 110px;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 20%;
   left: 50%;
 }
 
@@ -170,7 +170,7 @@ html, body {
   height: 130px;
   background-size: 240px 130px;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 60px;
 }
 
 .splashButton {
@@ -183,7 +183,10 @@ html, body {
 }
 
 #splashButtons {
-  margin-top: 70px;
+  margin-top: 60px;
+  /*position: absolute;*/
+  /*position: fixed;
+  bottom: 100px;*/
 }
 
 
@@ -201,12 +204,12 @@ html, body {
 
 #new {
   display: none;
-  margin-top: -30px;
+  margin-top: -40px;
 }
 
 #load {
   display: none;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 #newText, #loadText {
