@@ -362,6 +362,7 @@ input#voice:checked + label {
   width: 70px;
   height: 73px;
   background: url("../img/delete_icon.png");
+  background-size: 70px 73px;
   border-radius: 50%;
   display: none;
   z-index: 30;

@@ -45,11 +45,6 @@ window.onload = function() {
         $('#backButton').fadeIn();
     });
 
-    // saveButton.on("tap", function(event) {
-    //     $('#savePopup').fadeIn();
-    // });
-
-
     yes.on("tap", function(event) {
     	$('#popup').velocity({opacity: 0}, {display: 'none'}, 400);
 

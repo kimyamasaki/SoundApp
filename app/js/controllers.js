@@ -450,13 +450,14 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         var el = document.getElementById("editor1");
         el.value += id;
         string.setText(el.value + " ");
-
-        // var greens = ['#ff0000', '#00ff00', '#0000ff'];
-        // var random_color = greens[Math.floor(Math.random() * greens.length)];
-        // $(".green").css('background', random_color);
     };
 
     $scope.deleteSound = function(id){
+        if (numSounds < 2) {
+            console.log('last one');
+            $scope.clearBack();
+        }
+
         numSounds--;
 
         $scope.sounds[id].added = false;
@@ -514,6 +515,7 @@ module.controller('soundController', function ($scope, $window, soundservice) {
                $scope.nowPlaying.splice(i, 1);
             }
         }
+
     };
 
 
@@ -626,14 +628,14 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             case 6:
                 $(".tile").css('height', $scope.windowHeight/3 + 'px');
                 $(".tile").css('width', 50 + '%');
-                $(".tile img").css('height', 120 + 'px');
+                $(".tile img").css('height', 110 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/3) + 'px');
                 break;
             case 7:
             case 8:
                 $(".tile").css('height', $scope.windowHeight/4 + 'px');
                 $(".tile").css('width', 50 + '%');
-                $(".tile img").css('height', 120 + 'px');
+                $(".tile img").css('height', 90 + 'px');
                 $(".tile").css('line-height', ($scope.windowHeight/4) + 'px');
                 break;
             default:
