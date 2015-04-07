@@ -293,7 +293,15 @@ module.controller('soundController', function ($scope, $window, soundservice) {
     //     $('#saveButton').css({'opacity': '1', 'pointer-events': 'auto'});
     // }
 
-    $scope.newSoundParty = function(id){
+    $scope.start = function(){
+        $('#authMe').css('display', 'none');
+        $('#new').css('display', 'block');
+        $('#load').css('display', 'block');
+    }
+
+
+
+    $scope.newSoundParty = function(){
         $scope.save();
 
         if (loadList.length > 0) {
@@ -309,18 +317,16 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             }
         } else {
             $scope.splashHideShow = false;
+            $scope.splash2HideShow = false;
             $scope.soundPartyHideShow = true;
             console.log('New!');
         } 
-
-        
-        
     }
+
     $scope.loadSoundParty = function(id){
         
         $scope.save();
 
-        //console.log(loadList).length;
         if (0 < loadList.length) {
 
             $scope.splashHideShow = false;
@@ -329,36 +335,25 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             for (var i = 0; i < loadList.length; i++) {
                 $scope.sounds[loadList[i]].added = true;
                 $scope.togglePlay(loadList[i]);
-                //console.log(loadList[i]);
-
                 $scope.getTileSize();
           }
         } else {
             alert("Your load file is empty. Create a new Sound Party!");
         }  
-         //console.log('Loading...')
     }
 
      $scope.clearAll = function(){
         var savedArray = document.getElementById("editor1").value;
         
         loadList = savedArray.split(" ").map(Number);
-        //console.log("LOAD LIST ID");
-        //console.log(loadList);
        
         for (var i = 0; i < loadList.length; i++) {
-            //console.log("THIS ITEM IS GETTING DELETED");
-            //console.log(loadList[i]);   
-            $scope.deleteSound(loadList[i]);
-            
+            $scope.deleteSound(loadList[i]);       
          }
-
         
         loadList = [];
-        //console.log(loadList);
         numSounds = 0;
-        // console.log("LOAD LIST after");
-        // console.log(loadList);
+
         //$scope.newSoundParty(id);
         
         //numSounds = 0;
@@ -368,11 +363,9 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         // el.value += loadList; 
         // string.setText(el.value);
 
-        
         // var el = document.getElementById("editor1");
         // el.value += joinedArray;
         // string.setText(el.value);
-
     }
 
     $scope.save = function() {
@@ -447,31 +440,20 @@ module.controller('soundController', function ($scope, $window, soundservice) {
 
         //This deletes the right ids out of the text area
         var savedArray = document.getElementById("editor1").value;
-        // console.log("BEFORE");
-        // console.log(savedArray);
         var changeToArray = savedArray.split(" ").map(Number);
-        // console.log("LAST ITEM IS 0???");
-        // console.log(changeToArray[changeToArray.length-1]);
+
         if (changeToArray[changeToArray.length-1] == 0){
-                changeToArray.pop();
-            }
-        //.map(Number);
-        //console.log("MY ARRAY");
-        //console.log(changeToArray);
+            changeToArray.pop();
+        }
+
         var index = changeToArray.indexOf(id);
         changeToArray.splice(index, 1);
         $('textarea').val('');
-        //console.log($'textarea');
        
         var joinedArray = changeToArray.join(" ");
-        // ////changeBack = changeToArray.toString();
-        
         var el = document.getElementById("editor1");
         el.value += joinedArray;
-        //console.log("JOINED ARRAY");
-        //console.log(joinedArray);
         string.setText(el.value);
-
     };
 
 

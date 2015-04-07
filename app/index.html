@@ -14,52 +14,56 @@
   <script src="js/loading.js"></script>
 </head>
 
-<body>
+<body oncontextmenu="return false">
   <div id ="loadScreen">
     <div id="loading"><img class="resize" ng-src='./img/loading.gif' /></div>
   </div>
-<!-- <body> -->
 
   <div ng-app="soundApp" ng-controller="soundController">
-<!--   <button id="authorizeButton" enabled>You must authorize</button> -->
 
-    <!-- <div ng-show="splashHideShow"> -->
-    <div id="topMenu">
-      <div id ="shakeMe"></div>
-      <!-- <button ng-click="clearAll(); newSoundParty();">Clear</button> -->
-      <button ng-click="loadSoundParty(loadList)">Load</button>
-      <button id="saveButton" ng-click="save()"></button>
-    </div>
+    <div ng-show="splashHideShow">
+      <div id="splashTitle"></div>
+      <div id="splashBg"></div>
 
-    
-    <div id="gradient"></div>
-    <div id="backButton"></div>
-
-    <!-- <div ng-show="soundPartyHideShow"> -->
-      
-    <div id="menu">
-
-      <div id="soundCategories">
-
-        <label id="categories" ng-repeat="type in types">
-            <input type="checkbox" name="category" id="{{type.category}}" ng-click="checkMenuToggle(); filters.type = type.category" />
-            <label for="{{type.category}}"></label>
-            <!-- <img ng-src= './img/{{ type.default }}' /> -->
-        </label>
-
-        <!-- <a href="" ng-click="save()">Save</a> -->
-
+      <div class="splashButton" ng-click="start()">
+        <a id="authorizeButton" enabled>Get Started</a>
       </div>
 
-      <div id="submenu" ng-show="soundmenuHideShow">
+      <div id="new" class="splashButton" ng-click="clearAll(); newSoundParty();">New</div>
+      <div id="load" class="splashButton" ng-click="loadSoundParty(loadList)">Load</div>
+    </div>
+    
 
-          <ul>
-            <li ng-repeat="sound in sounds | filter:filters" ng-click="sound.added = !sound.added; addSound(sound.id)" ng-class="{added: (sound.added && checkNumSounds())}">          
-                {{ sound.name }}
-            </li>
-          </ul>
+    <div ng-show="soundPartyHideShow">
+      
+      <div id="topMenu">
+        <div id ="shakeMe"></div>        
+        <button id="saveButton" ng-click="save()"></button>
+      </div>
 
-      </div>  
+      <div id="gradient"></div>
+      <div id="backButton"></div>
+
+      <div id="menu">
+        <div id="soundCategories">
+
+          <label id="categories" ng-repeat="type in types">
+              <input type="checkbox" name="category" id="{{type.category}}" ng-click="checkMenuToggle(); filters.type = type.category" />
+              <label for="{{type.category}}"></label>
+          </label>
+
+        </div>
+
+        <div id="submenu" ng-show="soundmenuHideShow">
+
+            <ul>
+              <li ng-repeat="sound in sounds | filter:filters" ng-click="sound.added = !sound.added; addSound(sound.id)" ng-class="{added: (sound.added && checkNumSounds())}">          
+                  {{ sound.name }}
+              </li>
+            </ul>
+
+        </div>  
+      </div>
     </div>
 
 
