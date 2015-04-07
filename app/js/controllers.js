@@ -7,7 +7,7 @@ module.service('soundservice', function () {
     //sounds array to hold list of all sounds
     //----------------------------BEAT------------------------------------
     
-var sounds = [{
+    var sounds = [{
         id: 0,
         'thumb': '../img/c_portrait_4.png',
         'pic': '../img/drum1.gif',
@@ -327,7 +327,6 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             }
         } else {
             $scope.splashHideShow = false;
-            $scope.splash2HideShow = false;
             $scope.soundPartyHideShow = true;
             console.log('New!');
         } 
@@ -345,12 +344,31 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             for (var i = 0; i < loadList.length; i++) {
                 $scope.sounds[loadList[i]].added = true;
                 $scope.togglePlay(loadList[i]);
-                $scope.getTileSize();
-          }
+            }
+
+            numSounds = loadList.length;
+            $scope.getTileSize();
+
+            $('#backButton').fadeIn();
+            $('#beat, #bass, #melody, #voice').prop('checked', false);
+            $('#submenu').css('display', 'none');
+        
+
         } else {
             alert("Your load file is empty. Create a new Sound Party!");
         }  
+
+
     }
+
+    $scope.splashToggle = function() {
+        $scope.splashHideShow = true;
+        $scope.soundPartyHideShow = false;
+
+        $('#new').velocity("transition.bounceUpIn", 600);
+        $('#load').delay(80).velocity("transition.bounceUpIn", 600);
+    }
+
 
      $scope.clearAll = function(){
         var savedArray = document.getElementById("editor1").value;
@@ -363,20 +381,22 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         
         loadList = [];
         numSounds = 0;
-
-        //$scope.newSoundParty(id);
-        
-        //numSounds = 0;
-        
-        // loadList = loadList.join(" ");
-        // var el = document.getElementById("editor1");
-        // el.value += loadList; 
-        // string.setText(el.value);
-
-        // var el = document.getElementById("editor1");
-        // el.value += joinedArray;
-        // string.setText(el.value);
     }
+
+
+    $scope.clearBack = function(){
+        var savedArray = document.getElementById("editor1").value;
+        
+        loadList = savedArray.split(" ").map(Number);
+       
+        for (var i = 0; i < loadList.length; i++) {
+            $scope.deleteBack(loadList[i]);       
+        }
+        
+        // loadList = [];
+        numSounds = 0;
+    }
+
 
     $scope.save = function() {
         var savedArray = document.getElementById("editor1").value;
@@ -386,10 +406,18 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         if (loadList[loadList.length-1] == 0){
                 loadList.pop();
             }
-        //console.log(savedArray);
         console.log(loadList);
     }
 
+
+    $scope.savePopup = function() {
+
+        $('#savePopup').fadeIn('fast').delay(1000).fadeOut('fast');
+
+        $('#savePopup').velocity({opacity: 1}, {display: 'block'}, 500)
+            .delay(1000)
+            .velocity({opacity: 0}, {display: 'none'});
+    }
 
     $scope.addSound = function(id) {
         
@@ -464,6 +492,28 @@ module.controller('soundController', function ($scope, $window, soundservice) {
         var el = document.getElementById("editor1");
         el.value += joinedArray;
         string.setText(el.value);
+    };
+
+
+    $scope.deleteBack = function(id){
+        numSounds--;
+
+        $scope.sounds[id].added = false;
+        $scope.sounds[id].isPlaying = false;
+
+        $scope.clips[id].pause();
+        $scope.clips[id].currentTime = 0;
+
+        $(".tile").css('width', 80 + '%');
+
+        $scope.getTileSize();
+        console.log("number of sounds: " + numSounds);
+
+        for(var i = $scope.nowPlaying.length - 1; i >= 0; i--) {
+            if($scope.nowPlaying[i] === $scope.clips[id]) {
+               $scope.nowPlaying.splice(i, 1);
+            }
+        }
     };
 
 
@@ -546,8 +596,9 @@ module.controller('soundController', function ($scope, $window, soundservice) {
                 $('.tile').css({'border': 'none', 'border-radius': 0});
                 $('#topMenu').fadeIn('fast');
                 $('#soundCategories').css({'opacity': '1', 'pointer-events': 'auto'});
-                $('#backButton').fadeOut('fast');
-                $('#gradient').fadeOut('fast');
+                $('#xButton').fadeOut('fast');
+                $('#backButton').fadeIn('fast');
+
                 break;
             case 1:
                 console.log("1 sound");
@@ -555,7 +606,6 @@ module.controller('soundController', function ($scope, $window, soundservice) {
                 $(".tile").css('width', 100 + '%');
                 $(".tile img").css('height', 200 + 'px');
                 $(".tile").css('line-height', (540) + 'px');
-                // $('#saveButton').css({'opacity': '1', 'pointer-events': 'auto'});
                 break;
             case 2:
                 console.log("2 sounds");
@@ -569,6 +619,7 @@ module.controller('soundController', function ($scope, $window, soundservice) {
                 console.log("4 sounds");
                 $(".tile").css('height', $scope.windowHeight/2 + 'px');
                 $(".tile").css('width', 50 + '%');
+                $(".tile").css('line-height', ($scope.windowHeight/2) + 'px');
                 $(".tile img").css('height', 140 + 'px');
                 break;
             case 5:
@@ -590,13 +641,6 @@ module.controller('soundController', function ($scope, $window, soundservice) {
                 break;
         }
     };
-
-
-    // $scope.menuToggle = function() {
-    //     $scope.categoriesHideShow = !$scope.categoriesHideShow;
-    //     $scope.soundmenuHideShow = false;
-    // };
-
 
     $scope.checkMenuToggle = function() {
         
@@ -620,15 +664,8 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             $scope.soundmenuHideShow = false;
         }
 
-        // $('#submenu').velocity("transition.bounceDownOut", 200);
-        // $('#submenu').velocity("transition.bounceUpIn", 200);
-
-        // $('#submenu').velocity({opacity: 0}, {bottom: '60px'}, 400);
-        $('#submenu').velocity({opacity: 0, bottom: '70px'}, 200);
-        $('#submenu').velocity({opacity: 1, bottom: '76px'}, 200);
-
-        // $('#submenu').fadeOut('fast');
-        // $('#submenu').fadeIn('fast');
+        $('#submenu').fadeOut('fast');
+        $('#submenu').fadeIn('fast');
     };
 
 
@@ -640,16 +677,5 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             return false;
         }
     };
-
-
-    // $scope.toggleBeat = function() {
-    //     // $scope.soundmenuHideShow = !$scope.soundmenuHideShow;
-    //     $scope.soundmenuHideShow = !$scope.soundmenuHideShow;
-    // };
-
-    // $scope.start = function() {
-    //     startRealtime();
-    //     newSoundParty();
-    // }
 
 });

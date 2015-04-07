@@ -19,7 +19,7 @@
 
   <div ng-app="soundApp" ng-controller="soundController">
 
-    <div ng-show="splashHideShow">
+    <div id="splash" ng-show="splashHideShow">
       <div id="splashTitle"></div>
       <div id="splashBg"></div>
 
@@ -41,15 +41,16 @@
     </div>
     
 
-    <div ng-show="soundPartyHideShow">
+    <div id="soundParty" ng-show="soundPartyHideShow">
 
       <div id="topMenu">
         <div id ="shakeMe"></div>        
-        <button id="saveButton" ng-click="save()"></button>
+        <button id="saveButton" ng-click="save();"></button>
       </div>
 
       <div id="gradient"></div>
-      <div id="backButton"></div>
+      <div id="backButton" ng-click="splashToggle(); clearBack()"></div>
+      <div id="xButton"></div>
 
       <div id="menu">
         <div id="soundCategories">
@@ -86,12 +87,19 @@
         </div>
       </div>
 
+
+      <div id="savePopup">
+        Your sounds have been saved!
+      </div>
+
       <div id="popup">
         Would you like to clear all sounds?
         <br />
         <div id="yes">Yes</div>
         <div id="no">No</div>
       </div>
+
+
     </div>
 
 

@@ -9,7 +9,7 @@ html, body {
   /*background-color: #313559;*/
   font-family: 'Roboto', sans-serif;
   font-color: #313559;
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
 }
 
 
@@ -28,6 +28,23 @@ html, body {
   margin: 200px 0 0 -37.5%;
   opacity: 0;
   display: none;
+}
+
+#savePopup {
+  background-color: #F4F3EF;
+  width: 60%;
+  height: 100px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 25px 35px 30px 35px;
+  font-size: 18px;
+  z-index: 40;
+  border-bottom: 3px solid rgba(0,0,0,0.3);
+  position: fixed;
+  left: 50%;
+  margin: 200px 0 0 -30%;
+  opacity: 0;
+  /*display: none;*/
 }
 
 #yes, #no {
@@ -88,7 +105,7 @@ html, body {
 
 #submenu {
 	position: absolute;
-	bottom: 70px;
+	bottom: 76px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -143,15 +160,15 @@ html, body {
   height: 110px;
   background-size: 258px 110px;
   margin: 0 auto;
-  margin-top: 95px;
+  margin-top: 25%;
   left: 50%;
 }
 
 #splashBg {
   background: url('../img/splashbg.png');
-  width: 250px;
-  height: 135px;
-  background-size: 250px 135px;
+  width: 240px;
+  height: 130px;
+  background-size: 240px 130px;
   margin: 0 auto;
   margin-top: 70px;
 }
@@ -166,7 +183,7 @@ html, body {
 }
 
 #splashButtons {
-  margin-top: 80px;
+  margin-top: 70px;
 }
 
 
@@ -356,8 +373,21 @@ input#voice:checked + label {
   width: 65px;
   height: 65px;
   z-index: 30;
+  /*display: none;*/
+}
+
+#xButton {
+  position: fixed;
+  top: 3px;
+  right: 4px;
+  background: url('../img/xButton.png');
+  background-size: 65px;
+  width: 65px;
+  height: 65px;
+  z-index: 30;
   display: none;
 }
+
 
 #gradient {
   position: fixed;
@@ -367,7 +397,8 @@ input#voice:checked + label {
   height: 80px;
   width: 100%;
   z-index: 30;
-  display: none;
+  pointer-events: none;
+  /*display: none;*/
 }
 
 .green {
