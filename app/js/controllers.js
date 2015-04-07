@@ -294,15 +294,25 @@ module.controller('soundController', function ($scope, $window, soundservice) {
     // }
 
     $scope.start = function(){
-        $('#authMe').css('display', 'none');
-        $('#new').css('display', 'block');
-        $('#load').css('display', 'block');
+        // $('#authMe').css('display', 'none');
+        $('#authMe').velocity("transition.bounceDownOut", 600)
+            .delay(100)
+            .velocity({display: 'none'});
+        $('#new').delay(500).velocity("transition.bounceUpIn", 600);
+        $('#load').delay(580).velocity("transition.bounceUpIn", 600);
     }
 
 
 
     $scope.newSoundParty = function(){
         $scope.save();
+
+        $('#new').velocity("transition.bounceDownOut", 600)
+            .velocity({display: 'none'});
+        $('#load').velocity("transition.bounceDownOut", 600)
+            .delay(80)
+            .velocity({display: 'none'});
+
 
         if (loadList.length > 0) {
             var r = window.confirm("Creating a new Sound Party will overwrite your load file! Continue?");
@@ -610,8 +620,15 @@ module.controller('soundController', function ($scope, $window, soundservice) {
             $scope.soundmenuHideShow = false;
         }
 
-        $('#submenu').fadeOut('fast');
-        $('#submenu').fadeIn('fast');
+        // $('#submenu').velocity("transition.bounceDownOut", 200);
+        // $('#submenu').velocity("transition.bounceUpIn", 200);
+
+        // $('#submenu').velocity({opacity: 0}, {bottom: '60px'}, 400);
+        $('#submenu').velocity({opacity: 0, bottom: '70px'}, 200);
+        $('#submenu').velocity({opacity: 1, bottom: '76px'}, 200);
+
+        // $('#submenu').fadeOut('fast');
+        // $('#submenu').fadeIn('fast');
     };
 
 

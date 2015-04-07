@@ -15,9 +15,11 @@ window.onload = function() {
 
     var soundboard = new Hammer(document.getElementById("soundboard"));
     var backButton = new Hammer(document.getElementById("backButton"));
+    var yes = new Hammer(document.getElementById("yes"));
+    var no = new Hammer(document.getElementById("no"));
 
-    soundboard.on('press', function(event) {   
-        $('.deleteButton').css('display', 'block');
+    soundboard.on('press', function(event) {  
+    	$('.deleteButton').css('display', 'block');
         $('.tile .innerElement').css('opacity', '0.5');
         $('.tile').css({'border': '5px solid #4b526d', 'border-radius': 10+'px'});
         $('#topMenu, #submenu').fadeOut();
@@ -37,6 +39,18 @@ window.onload = function() {
         $('#gradient').fadeOut();
     });
 
+    yes.on("tap", function(event) {
+    	$('#popup').velocity({opacity: 0}, {display: 'none'}, 400);
+
+        angular.element(document.getElementById('shakeMe')).scope().clearAll();
+        angular.element(document.getElementById('shakeMe')).scope().newSoundParty();
+        angular.element(document.getElementById('shakeMe')).scope().$apply();
+    });
+
+    no.on("tap", function(event) {
+        $('#popup').velocity({opacity: 0}, {display: 'none'}, 400);
+    });
+
     var myShakeEvent = new Shake({
         threshold: 15
     });
@@ -52,9 +66,12 @@ window.onload = function() {
 
         //put your own code here etc.
         //alert('Shake! Clearing? Hopefully ;a;');
-        angular.element(document.getElementById('shakeMe')).scope().clearAll();
-        angular.element(document.getElementById('shakeMe')).scope().newSoundParty();
-        angular.element(document.getElementById('shakeMe')).scope().$apply();
+
+        $('#popup').velocity({opacity: 1}, {display: 'block'}, 500);
+
+        // angular.element(document.getElementById('shakeMe')).scope().clearAll();
+        // angular.element(document.getElementById('shakeMe')).scope().newSoundParty();
+        // angular.element(document.getElementById('shakeMe')).scope().$apply();
 
     }
 

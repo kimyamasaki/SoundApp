@@ -5,11 +5,55 @@ html, body {
   width: 100%;
   padding: 0;
   margin: 0;
-  background: #4b526d;
+  background: #3B4060;
+  /*background-color: #313559;*/
   font-family: 'Roboto', sans-serif;
   font-color: #313559;
+  overflow-y: hidden;
 }
 
+
+#popup {
+  background-color: #F4F3EF;
+  width: 75%;
+  height: 170px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 30px 35px 30px 35px;
+  font-size: 18px;
+  z-index: 40;
+  border-bottom: 3px solid rgba(0,0,0,0.3);
+  position: fixed;
+  left: 50%;
+  margin: 200px 0 0 -37.5%;
+  opacity: 0;
+  display: none;
+}
+
+#yes, #no {
+  background: #444C6B;
+  width: 45%;
+  padding: 8px;
+  float: left;
+  border-radius: 20px;
+  display: inline-block;
+  color: white;
+  margin: 0 auto;
+  margin: 20px 0 40px 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+#yes {
+  margin-right: 20px;
+}
+
+#overlay {
+  width: 100%;
+  height: 1000px;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 30;
+}
 
 #loadScreen{
   background: #313559;
@@ -23,9 +67,10 @@ html, body {
 }
 
 .resize{
-  margin-top: 50%;
-  width: 25%;
-  height: 25%;
+  margin-top: 80%;
+  width: 10%;
+  height: 10%;
+  opacity: 0.5;
 }
 
 
@@ -43,7 +88,7 @@ html, body {
 
 #submenu {
 	position: absolute;
-	bottom: 76px;
+	bottom: 70px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -54,6 +99,7 @@ html, body {
 	background-color: #f4f3ef;
   /*border-bottom: 2px solid rgba(0,0,0,0.1);*/
   text-align: center;
+  /*opacity: 0;*/
 }
 
 #submenu ul {
@@ -93,44 +139,71 @@ html, body {
 
 #splashTitle {
   background: url('../img/title.png');
-  width: 360px;
-  height: 153px;
-  background-size: 360px 153px;
+  width: 258px;
+  height: 110px;
+  background-size: 258px 110px;
+  margin: 0 auto;
+  margin-top: 95px;
+  left: 50%;
 }
 
 #splashBg {
   background: url('../img/splashbg.png');
-  background: url('../img/title.png');
-  width: 70%;
-  /*background-size: cover;*/
+  width: 250px;
+  height: 135px;
+  background-size: 250px 135px;
+  margin: 0 auto;
+  margin-top: 70px;
 }
 
 .splashButton {
-  width: 272px;
-  height: 60px;
+  width: 227px;
+  height: 50px;
   background: url('../img/splashButton.png');
-  background-size: 272px 60px;
+  background-size: 227px 50px;
   margin: 0 auto;
+  position: relative;
 }
+
+#splashButtons {
+  margin-top: 80px;
+}
+
 
 #authorizeButton {
   font-family: 'Roboto', sans-serif;
-  font-size: 26px;
+  font-size: 20px;
   color: white;
   text-decoration: none;
-  /*margin: 0 auto;*/
-  margin-left: 70px;
+  position: absolute;
   text-align: center;
-  /*left: 50%;*/
+  top: 9px;
+  left: 0;
+  right: 0;
 }
 
 #new {
   display: none;
+  margin-top: -30px;
 }
 
 #load {
   display: none;
+  margin-top: 10px;
 }
+
+#newText, #loadText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  position: absolute;
+  top: 11px;
+  right: 0;
+  left: 0;
+}
+
 
 input[type="checkbox"] {
     display: none;
@@ -226,6 +299,8 @@ input#voice:checked + label {
 	position: fixed;
   height: 100%;
   width: 100%;
+  /*top: 0;*/
+  /*background-color: #4B526D;*/
 }
 
 .tile {
